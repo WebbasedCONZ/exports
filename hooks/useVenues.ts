@@ -1,20 +1,40 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { getCollection, upsert, KEYS } from '@/lib/storage';
-import type { Venue } from '@/types';
+import { createClient } from '@/lib/supabase/client';
 
 export function useVenues() {
-  const [venues, setVenues] = useState<Venue[]>([]);
-  const refresh = useCallback(() => setVenues(getCollection<Venue>(KEYS.venues)), []);
+  const [venues, setVenues] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const refresh = useCallback(async () => {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('venues')
+      .select('*, profile:profiles(*)');
+    setVenues(data ?? []);
+    setLoading(false);
+  }, []);
+
   useEffect(() => { refresh(); }, [refresh]);
-  return { venues, refresh };
+
+  return { venues, loading, refresh };
 }
 
-export function useVenue(id: string) {
-  const [venue, setVenue] = useState<Venue | null>(null);
+export function useVenue(slugOrId: string) {
+  const [venue, setVenue] = useState<any>(null);
+
   useEffect(() => {
-    const all = getCollection<Venue>(KEYS.venues);
-    setVenue(all.find((v) => v.id === id || v.slug === id) ?? null);
-  }, [id]);
+    if (!slugOrId) return;
+    const supabase = createClient();
+    supabase
+      .from('profiles')
+      .select('*, venue:venues(*)')
+      .or(`id.eq.${slugOrId},slug.eq.${slugOrId}`)
+      .single()
+      .then(({ data }) => {
+        if (data?.venue) setVenue({ ...data.venue, ...data, venue: undefined });
+      });
+  }, [slugOrId]);
+
   return venue;
 }

@@ -1,32 +1,48 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { getCollection, upsert, KEYS } from '@/lib/storage';
-import type { Artist } from '@/types';
+import { createClient } from '@/lib/supabase/client';
 
 export function useArtists() {
-  const [artists, setArtists] = useState<Artist[]>([]);
+  const [artists, setArtists] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const refresh = useCallback(() => {
-    setArtists(getCollection<Artist>(KEYS.artists));
+  const refresh = useCallback(async () => {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('artists')
+      .select('*, profile:profiles(*)');
+    setArtists(data ?? []);
+    setLoading(false);
   }, []);
 
-  useEffect(() => {
-    refresh();
-  }, [refresh]);
+  useEffect(() => { refresh(); }, [refresh]);
 
-  const saveArtist = (artist: Artist) => {
-    upsert(KEYS.artists, artist);
+  const saveArtist = async (artist: any) => {
+    const supabase = createClient();
+    await supabase.from('artists').upsert(artist);
     refresh();
   };
 
-  return { artists, saveArtist, refresh };
+  return { artists, loading, saveArtist, refresh };
 }
 
-export function useArtist(id: string) {
-  const [artist, setArtist] = useState<Artist | null>(null);
+export function useArtist(slug: string) {
+  const [artist, setArtist] = useState<any>(null);
+
   useEffect(() => {
-    const all = getCollection<Artist>(KEYS.artists);
-    setArtist(all.find((a) => a.id === id || a.slug === id) ?? null);
-  }, [id]);
+    if (!slug) return;
+    const supabase = createClient();
+    supabase
+      .from('profiles')
+      .select('*, artist:artists(*, touring_windows(*), vouch_badges(*))')
+      .eq('slug', slug)
+      .single()
+      .then(({ data }) => {
+        if (data?.artist) {
+          setArtist({ ...data.artist, ...data, artist: undefined });
+        }
+      });
+  }, [slug]);
+
   return artist;
 }

@@ -1,21 +1,46 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { getCollection, upsert, KEYS } from '@/lib/storage';
-import type { Promoter } from '@/types';
+import { createClient } from '@/lib/supabase/client';
 
 export function usePromoters() {
-  const [promoters, setPromoters] = useState<Promoter[]>([]);
-  const refresh = useCallback(() => setPromoters(getCollection<Promoter>(KEYS.promoters)), []);
+  const [promoters, setPromoters] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const refresh = useCallback(async () => {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('promoters')
+      .select('*, profile:profiles(*)');
+    setPromoters(data ?? []);
+    setLoading(false);
+  }, []);
+
   useEffect(() => { refresh(); }, [refresh]);
-  const savePromoter = (p: Promoter) => { upsert(KEYS.promoters, p); refresh(); };
-  return { promoters, savePromoter, refresh };
+
+  const savePromoter = async (promoter: any) => {
+    const supabase = createClient();
+    await supabase.from('promoters').upsert(promoter);
+    refresh();
+  };
+
+  return { promoters, loading, savePromoter, refresh };
 }
 
-export function usePromoter(id: string) {
-  const [promoter, setPromoter] = useState<Promoter | null>(null);
+export function usePromoter(slugOrId: string) {
+  const [promoter, setPromoter] = useState<any>(null);
+
   useEffect(() => {
-    const all = getCollection<Promoter>(KEYS.promoters);
-    setPromoter(all.find((p) => p.id === id || p.slug === id) ?? null);
-  }, [id]);
+    if (!slugOrId) return;
+    const supabase = createClient();
+    supabase
+      .from('profiles')
+      .select('*, promoter:promoters(*)')
+      .or(`id.eq.${slugOrId},slug.eq.${slugOrId}`)
+      .single()
+      .then(({ data }) => {
+        if (data?.promoter) setPromoter({ ...data.promoter, ...data, promoter: undefined });
+      });
+  }, [slugOrId]);
+
   return promoter;
 }
