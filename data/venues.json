@@ -1,0 +1,97 @@
+[
+  {
+    "id": "venue-001",
+    "name": "The Substation",
+    "slug": "the-substation",
+    "description": "Auckland's premier underground club venue, housed in a converted electrical substation in Newton. Three rooms across two floors with a dedicated DJ booth and separated smoking area. Capacity 450.",
+    "location": { "address": "21 Surrey Crescent, Newton", "city": "Auckland", "country": "New Zealand" },
+    "capacity": 450,
+    "photos": [
+      { "imageUrl": "https://images.unsplash.com/photo-1574169208507-84376144848b?w=800&q=80", "caption": "Main Room Booth", "category": "booth" },
+      { "imageUrl": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80", "caption": "Main Dancefloor", "category": "dancefloor" },
+      { "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80", "caption": "Exterior Entrance", "category": "exterior" },
+      { "imageUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80", "caption": "Load-in Bay", "category": "loadIn" }
+    ],
+    "technicalSpecs": {
+      "boothSetup": "2× Pioneer CDJ-3000, Allen & Heath Xone:96, 1× Technics SL-1210 Mk7, Rane SL4 interface",
+      "soundSystem": "Funktion-One Res4 system, 4× F218 sub-bass units, Martin Audio W8L side fills",
+      "lighting": "Robe moving heads, Martin strobes, custom LED pixel panels, full Madrix control",
+      "stagingDimensions": "Booth: 3.2m wide × 1.8m deep, raised 400mm above floor. Stage: N/A (DJ-only booth)",
+      "monitorSetup": "2× Funktion-One F101 booth monitors, adjustable SPL via mixer aux"
+    },
+    "loadInInfo": {
+      "accessTime": "From 17:00 day of event. Full soundcheck window 18:00–20:00",
+      "instructions": "Enter via Surrey Lane (rear alley). Press buzzer labeled 'PRODUCTION' at the black roller door. Venue manager will meet you. Do not use the public entrance on Surrey Crescent.",
+      "parkingAvailable": true,
+      "elevatorAccess": false,
+      "additionalNotes": "Green room with rider facilities on ground floor. No natural light. CCTV throughout. All equipment must be signed in with production manager."
+    },
+    "venueFee": { "amount": 0, "currency": "NZD", "feeType": "negotiable", "notes": "No standard venue hire fee for approved events. Revenue split negotiated per event." },
+    "contactEmail": "production@thesubstation.nz",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-02-01T00:00:00Z"
+  },
+  {
+    "id": "venue-002",
+    "name": "Viaduct Warehouse",
+    "slug": "viaduct-warehouse",
+    "description": "A raw warehouse space in Wellington's Viaduct Harbour. 600 capacity across one floor with a central DJ stage and full bar. Resident sound system from d&b audiotechnik with custom subwoofer array.",
+    "location": { "address": "14 Viaduct Harbour Ave", "city": "Wellington", "country": "New Zealand" },
+    "capacity": 600,
+    "photos": [
+      { "imageUrl": "https://images.unsplash.com/photo-1504509546545-e000b4a62425?w=800&q=80", "caption": "DJ Stage & Booth", "category": "booth" },
+      { "imageUrl": "https://images.unsplash.com/photo-1598387993441-a364f854cfbe?w=800&q=80", "caption": "Main Floor", "category": "dancefloor" },
+      { "imageUrl": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&q=80", "caption": "Stage from Floor", "category": "dancefloor" },
+      { "imageUrl": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=800&q=80", "caption": "Load-In Zone", "category": "loadIn" }
+    ],
+    "technicalSpecs": {
+      "boothSetup": "2× Pioneer CDJ-3000, Pioneer DJM-V10, Pioneer CDJ-2000NXS2 (backup), no vinyl setup",
+      "soundSystem": "d&b audiotechnik V-Series line array, 4× V-SUB subwoofers, Q10 frontfills",
+      "lighting": "Claypaky Mythos 2 moving heads, Chauvet strobes, DMX house control",
+      "stagingDimensions": "Central stage: 4m wide × 3m deep, 600mm height. Booth is stage-integrated",
+      "monitorSetup": "2× d&b E8 stage monitors, in-ear mix available on request"
+    },
+    "loadInInfo": {
+      "accessTime": "From 16:00. Soundcheck window 17:00–19:30. Doors at 21:00",
+      "instructions": "Drive to Viaduct Harbour Ave. Loading bay is the orange door marked 'EVENT ACCESS' — 50m past the main entrance. Call the duty manager on arrival (number confirmed in advance sheet).",
+      "parkingAvailable": false,
+      "elevatorAccess": true,
+      "additionalNotes": "Free artist parking in Civic Carpark with validated ticket — ask production. Green room is accessed via elevator, level B1. No smoking inside."
+    },
+    "venueFee": { "amount": 500, "currency": "NZD", "feeType": "flat", "notes": "Flat $500 NZD facility fee per event, covers full AV technician support and cleaning." },
+    "contactEmail": "bookings@viaductwarehouse.co.nz",
+    "createdAt": "2023-08-01T00:00:00Z",
+    "updatedAt": "2024-01-15T00:00:00Z"
+  },
+  {
+    "id": "venue-003",
+    "name": "Flux Social Club",
+    "slug": "flux-social-club",
+    "description": "An intimate 200-cap basement bar in Christchurch's arts precinct. Monthly residency programming with a hand-built sound system and vinyl-forward DJ setup. Perfect for club nights where the music takes priority.",
+    "location": { "address": "48 Lichfield Street", "city": "Christchurch", "country": "New Zealand" },
+    "capacity": 200,
+    "photos": [
+      { "imageUrl": "https://images.unsplash.com/photo-1564157830993-60fb6b8a0b35?w=800&q=80", "caption": "Intimate Booth Setup", "category": "booth" },
+      { "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80", "caption": "Dance Floor", "category": "dancefloor" },
+      { "imageUrl": "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&q=80", "caption": "Exterior — Lichfield St", "category": "exterior" }
+    ],
+    "technicalSpecs": {
+      "boothSetup": "2× Pioneer CDJ-2000NXS2, Allen & Heath Xone:43C, 2× Technics SL-1210 Mk5",
+      "soundSystem": "Custom 2-way Void Acoustics system with Bassline subs, 4× Nucleus satellite speakers",
+      "lighting": "Minimal — house LED wash only. Strobe available. No moving heads.",
+      "stagingDimensions": "Booth is floor level, 2.4m wide × 1.2m deep. No staging.",
+      "monitorSetup": "1× Void Acoustics Air8 booth monitor"
+    },
+    "loadInInfo": {
+      "accessTime": "From 19:00. Soundcheck 19:00–21:00. Doors 22:00.",
+      "instructions": "Enter from Lichfield St — black door with 'FLUX' stencil. Stairs down to basement. No loading bay — all equipment must be carried through front entrance. Maximum 2 steps down to floor level.",
+      "parkingAvailable": false,
+      "elevatorAccess": false,
+      "additionalNotes": "Compact green room / prep area behind the bar. Water and 1× rider drink provided. No advance hospitality for support acts."
+    },
+    "venueFee": { "amount": 15, "currency": "NZD", "feeType": "percentage", "notes": "15% of door revenue (after first 50 tickets). Settled on the night in cash." },
+    "contactEmail": "hello@fluxsocialclub.nz",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2024-02-20T00:00:00Z"
+  }
+]

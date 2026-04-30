@@ -1,0 +1,167 @@
+[
+  {
+    "id": "artist-001",
+    "displayName": "SHIRIN",
+    "slug": "shirin",
+    "bio": "Auckland-based selector and DJ known for deep, hypnotic sets bridging jungle, UKG, and 140. Resident at NightShift since 2021, she brings meticulous programming and an instinct for the dancefloor that has seen her play alongside international heavyweights across NZ and Australia.",
+    "location": { "city": "Auckland", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80",
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1574169208507-84376144848b?w=600&q=80",
+      "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80",
+      "https://images.unsplash.com/photo-1598387993441-a364f854cfbe?w=600&q=80",
+      "https://images.unsplash.com/photo-1571266028243-d220c6a6c88f?w=600&q=80",
+      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80",
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80"
+    ],
+    "genres": ["Jungle", "UKG", "140"],
+    "experienceLevel": "Established",
+    "genderIdentity": "Woman",
+    "equipment": ["CDJ-3000s", "Vinyl"],
+    "hardwareRequirements": "Requires a full CDJ-3000 setup with RCA outputs for vinyl integration. No substitutions.",
+    "embeds": [
+      {
+        "type": "soundcloud",
+        "url": "https://soundcloud.com/nts_radio/jungle-selections",
+        "label": "NTS Jungle Selections — Jan 2024"
+      },
+      {
+        "type": "mixcloud",
+        "url": "https://www.mixcloud.com/NTSRadio/shirin-16th-december-2023/",
+        "label": "NTS Radio — Dec 2023"
+      }
+    ],
+    "fee": { "minimum": 300, "currency": "NZD", "negotiable": true },
+    "availability": [],
+    "socialLinks": { "instagram": "https://instagram.com" },
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-03-01T00:00:00Z"
+  },
+  {
+    "id": "artist-002",
+    "displayName": "PASCAL K",
+    "slug": "pascal-k",
+    "bio": "Wellington-born, internationally touring DJ with a decade of experience in the techno and industrial underground. Known for bruising four-hour sets that don't flinch. Played Tresor, Berghain warm-ups, and Fabric. Now back in NZ building the local scene.",
+    "location": { "city": "Wellington", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80",
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1564157830993-60fb6b8a0b35?w=600&q=80",
+      "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80",
+      "https://images.unsplash.com/photo-1504509546545-e000b4a62425?w=600&q=80",
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80"
+    ],
+    "genres": ["Techno", "Industrial"],
+    "experienceLevel": "Headliner",
+    "genderIdentity": "Man",
+    "equipment": ["CDJ-3000s", "CDJ-2000NXS2", "Ableton"],
+    "hardwareRequirements": "Prefers Pioneer mixer (DJM-900NXS2 or V10). Will require a soundcheck minimum 90 minutes before doors.",
+    "embeds": [
+      {
+        "type": "soundcloud",
+        "url": "https://soundcloud.com/pascal-k/fabric-promo-mix",
+        "label": "Fabric Promo Mix — Oct 2023"
+      }
+    ],
+    "fee": { "minimum": 800, "currency": "NZD", "negotiable": false },
+    "availability": [],
+    "socialLinks": { "instagram": "https://instagram.com", "bandcamp": "https://bandcamp.com" },
+    "createdAt": "2024-02-01T00:00:00Z",
+    "updatedAt": "2024-02-28T00:00:00Z"
+  },
+  {
+    "id": "artist-003",
+    "displayName": "VERA LOW",
+    "slug": "vera-low",
+    "bio": "Emerging DJ and producer from Christchurch with a rare ear for the intersection of UK Garage and Afrobeats. Still cutting her teeth but already creating a loyal following with energetic, crowd-reading sets. Available for support slots and emerging-artist showcases.",
+    "location": { "city": "Christchurch", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80",
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=600&q=80",
+      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80",
+      "https://images.unsplash.com/photo-1574169208507-84376144848b?w=600&q=80"
+    ],
+    "genres": ["Garage", "Afrobeats", "UKG"],
+    "experienceLevel": "Emerging",
+    "genderIdentity": "Woman",
+    "equipment": ["Controller", "CDJ-2000NXS2"],
+    "hardwareRequirements": null,
+    "embeds": [
+      {
+        "type": "mixcloud",
+        "url": "https://www.mixcloud.com/NTSRadio/nts-daily-new-talent-mix/",
+        "label": "New Talent Mix — Feb 2024"
+      }
+    ],
+    "fee": { "minimum": 150, "currency": "NZD", "negotiable": true },
+    "availability": [],
+    "socialLinks": { "instagram": "https://instagram.com" },
+    "createdAt": "2024-03-10T00:00:00Z",
+    "updatedAt": "2024-03-10T00:00:00Z"
+  },
+  {
+    "id": "artist-004",
+    "displayName": "MAKO",
+    "slug": "mako",
+    "bio": "Auckland selector with deep roots in Drum & Bass and Breaks. Resident at Basin and part of the Sound Collective crew. Runs a monthly on Base FM and curates the Subfreq podcast series. Equally comfortable headlining or doing sunrise sets.",
+    "location": { "city": "Auckland", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80",
+      "https://images.unsplash.com/photo-1619983081563-430f63602796?w=600&q=80",
+      "https://images.unsplash.com/photo-1598387993441-a364f854cfbe?w=600&q=80",
+      "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80"
+    ],
+    "genres": ["Drum & Bass", "Breaks", "Jungle"],
+    "experienceLevel": "Mid-level",
+    "genderIdentity": "Non-binary",
+    "equipment": ["CDJ-3000s", "Vinyl", "Ableton"],
+    "hardwareRequirements": "Requires 4-channel mixer for Ableton integration. Prefers Allen & Heath.",
+    "embeds": [
+      {
+        "type": "soundcloud",
+        "url": "https://soundcloud.com/drum-and-bass-arena/mako-mix",
+        "label": "D&B Arena Mix — Mar 2024"
+      }
+    ],
+    "fee": { "minimum": 400, "currency": "NZD", "negotiable": true },
+    "availability": [],
+    "socialLinks": { "instagram": "https://instagram.com", "bandcamp": "https://bandcamp.com" },
+    "createdAt": "2024-01-20T00:00:00Z",
+    "updatedAt": "2024-03-05T00:00:00Z"
+  },
+  {
+    "id": "artist-005",
+    "displayName": "JUNO SUN",
+    "slug": "juno-sun",
+    "bio": "House and Electro DJ with a vintage ear and a modern sensibility. Known for eclectic selections that span disco, electro, and deep house — always in service of the groove. Regular at Auckland's leading underground venues and a frequent guest on Soundpark Radio.",
+    "location": { "city": "Auckland", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80",
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80",
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80",
+      "https://images.unsplash.com/photo-1571266028243-d220c6a6c88f?w=600&q=80"
+    ],
+    "genres": ["House", "Electro", "Breaks"],
+    "experienceLevel": "Established",
+    "genderIdentity": "Non-binary",
+    "equipment": ["CDJ-3000s", "Vinyl"],
+    "hardwareRequirements": "Vinyl-friendly setup required. RCA inputs essential.",
+    "embeds": [
+      {
+        "type": "soundcloud",
+        "url": "https://soundcloud.com/ra/podcast-999-juno-sun",
+        "label": "RA Podcast — Nov 2023"
+      },
+      {
+        "type": "mixcloud",
+        "url": "https://www.mixcloud.com/discover/house/",
+        "label": "Soundpark Radio — Jan 2024"
+      }
+    ],
+    "fee": { "minimum": 500, "currency": "NZD", "negotiable": false },
+    "availability": [],
+    "socialLinks": { "instagram": "https://instagram.com" },
+    "createdAt": "2023-11-01T00:00:00Z",
+    "updatedAt": "2024-02-14T00:00:00Z"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "app-001",
+    "eventId": "event-001",
+    "slotId": "slot-001a",
+    "artistId": "artist-003",
+    "status": "Pending",
+    "coverNote": "I've been developing my UKG and garage selections for the past year and feel this opening slot would be the perfect fit for where I'm at musically. I've included a recent mix that shows the direction I'd take.",
+    "mixUrl": "https://soundcloud.com",
+    "matchScore": 72,
+    "appliedAt": "2026-04-22T10:00:00Z",
+    "updatedAt": "2026-04-22T10:00:00Z"
+  },
+  {
+    "id": "app-002",
+    "eventId": "event-001",
+    "slotId": "slot-001a",
+    "artistId": "artist-005",
+    "status": "Shortlisted",
+    "coverNote": "Long-time admirer of NightShift's programming — I think my garage and house selections would be a great warm-up fit for the Vol. 13 lineup.",
+    "mixUrl": "https://soundcloud.com",
+    "matchScore": 85,
+    "appliedAt": "2026-04-21T14:30:00Z",
+    "updatedAt": "2026-04-23T09:00:00Z"
+  },
+  {
+    "id": "app-003",
+    "eventId": "event-001",
+    "slotId": "slot-001b",
+    "artistId": "artist-001",
+    "status": "Confirmed",
+    "coverNote": "Jungle and 140 is my home turf. I'd love to bring my peak time selections to NightShift Vol. 13 — very familiar with The Substation and it's a room I love playing.",
+    "mixUrl": "https://soundcloud.com",
+    "matchScore": 95,
+    "appliedAt": "2026-04-20T16:00:00Z",
+    "updatedAt": "2026-04-24T12:00:00Z"
+  },
+  {
+    "id": "app-004",
+    "eventId": "event-002",
+    "slotId": "slot-002b",
+    "artistId": "artist-002",
+    "status": "Confirmed",
+    "coverNote": "4-hour techno sets are my bread and butter. Happy to discuss set direction with Basin Nights in advance.",
+    "mixUrl": "https://soundcloud.com",
+    "matchScore": 98,
+    "appliedAt": "2026-04-16T08:00:00Z",
+    "updatedAt": "2026-04-18T11:00:00Z"
+  },
+  {
+    "id": "app-005",
+    "eventId": "event-003",
+    "slotId": "slot-003a",
+    "artistId": "artist-003",
+    "status": "Pending",
+    "coverNote": "Sound Garden's new talent focus is exactly what I'm looking for. Christchurch-based, I'd love the chance to play closer to home.",
+    "mixUrl": "https://mixcloud.com",
+    "matchScore": 78,
+    "appliedAt": "2026-04-26T09:00:00Z",
+    "updatedAt": "2026-04-26T09:00:00Z"
+  }
+]

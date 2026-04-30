@@ -1,0 +1,104 @@
+[
+  {
+    "id": "contract-001",
+    "eventId": "event-004",
+    "slotId": "slot-004a",
+    "artistId": "artist-001",
+    "promoterId": "promoter-001",
+    "status": "SignedByBoth",
+    "termsText": "This agreement is entered into between NightShift Collective ('Promoter') and SHIRIN ('Artist') for the performance described herein.\n\n1. PERFORMANCE DETAILS\nThe Artist agrees to perform at NightShift Vol. 12 at The Substation, Auckland on 15 March 2026. Set time: 21:00–23:00 (Opening slot, UKG focus).\n\n2. FEE\nThe total performance fee is NZD $250, payable as follows: 50% advance (NZD $125) by 1 March 2026; 50% balance (NZD $125) on the night of performance, paid before the Artist's set.\n\n3. CANCELLATION POLICY\nIf the Artist cancels with fewer than 14 days notice, the advance is forfeited and the Promoter reserves the right to seek additional compensation for costs incurred. If the Promoter cancels with fewer than 14 days notice, the full agreed fee is payable to the Artist within 7 days.\n\n4. CONDUCT & TECHNICAL REQUIREMENTS\nThe Artist agrees to arrive at the venue no later than 20:00 for soundcheck. The Artist's technical rider must be submitted no later than 7 days prior to the event. Any changes to technical requirements after this point are subject to the venue's discretion.\n\n5. NO-SHOW POLICY\nFailure to appear for the performance without prior notification constitutes a breach of this agreement. The Promoter reserves the right to pursue recovery of any advance paid and costs associated with the no-show.\n\n6. GOVERNING LAW\nThis agreement is governed by the laws of New Zealand.\n\nBoth parties confirm they have read, understood, and agree to the above terms.",
+    "artistSignedAt": "2026-02-20T14:22:00Z",
+    "promoterSignedAt": "2026-02-21T09:45:00Z",
+    "gigSheet": {
+      "eventName": "NightShift Vol. 12",
+      "date": "Saturday 15 March 2026",
+      "venue": "The Substation",
+      "venueAddress": "21 Surrey Crescent, Newton, Auckland",
+      "artistName": "SHIRIN",
+      "slotTime": "21:00 – 23:00",
+      "soundcheckTime": "20:00",
+      "loadInTime": "19:30",
+      "fee": 250,
+      "currency": "NZD",
+      "advanceAmount": 125,
+      "advanceDueDate": "1 March 2026",
+      "promoterContact": "NightShift Collective — hello@nightshiftauckland.nz / 021 555 1234",
+      "venueContact": "The Substation Production — production@thesubstation.nz / 09 555 9876",
+      "hospitalityRider": "2× bottles of water (cold), 1× bar tab up to $30 NZD, meal if soundcheck is before 19:00",
+      "technicalRider": "CDJ-3000 × 2, Technics SL-1210 × 1 (vinyl capable), Allen & Heath Xone:96, RCA outputs required"
+    },
+    "paymentInstalments": [
+      {
+        "id": "pay-001a",
+        "label": "Advance (50%)",
+        "amount": 125,
+        "currency": "NZD",
+        "dueDate": "2026-03-01",
+        "paid": true,
+        "paidAt": "2026-02-28T16:00:00Z",
+        "method": "Bank Transfer"
+      },
+      {
+        "id": "pay-001b",
+        "label": "Balance on night",
+        "amount": 125,
+        "currency": "NZD",
+        "dueDate": "2026-03-15",
+        "paid": true,
+        "paidAt": "2026-03-15T22:30:00Z",
+        "method": "Cash"
+      }
+    ],
+    "createdAt": "2026-02-19T10:00:00Z",
+    "updatedAt": "2026-03-15T22:30:00Z"
+  },
+  {
+    "id": "contract-002",
+    "eventId": "event-001",
+    "slotId": "slot-001b",
+    "artistId": "artist-001",
+    "promoterId": "promoter-001",
+    "status": "Sent",
+    "termsText": "This agreement is entered into between NightShift Collective ('Promoter') and SHIRIN ('Artist') for the performance described herein.\n\n1. PERFORMANCE DETAILS\nThe Artist agrees to perform at NightShift Vol. 13 at The Substation, Auckland on 24 May 2026. Set time: 01:00–03:00 (Peak Time slot, Jungle/140 focus).\n\n2. FEE\nThe total performance fee is NZD $600, payable as follows: 50% advance (NZD $300) by 10 May 2026; 50% balance (NZD $300) on the night of performance, paid before the Artist's set.\n\n3. CANCELLATION POLICY\nIf the Artist cancels with fewer than 14 days notice, the advance is forfeited and the Promoter reserves the right to seek additional compensation for costs incurred. If the Promoter cancels with fewer than 14 days notice, the full agreed fee is payable to the Artist within 7 days.\n\n4. CONDUCT & TECHNICAL REQUIREMENTS\nThe Artist agrees to arrive at the venue no later than 00:00 for soundcheck. The Artist's technical rider must be submitted no later than 7 days prior to the event.\n\n5. NO-SHOW POLICY\nFailure to appear for the performance without prior notification constitutes a breach of this agreement.\n\n6. GOVERNING LAW\nThis agreement is governed by the laws of New Zealand.\n\nBoth parties confirm they have read, understood, and agree to the above terms.",
+    "artistSignedAt": null,
+    "promoterSignedAt": "2026-04-25T10:00:00Z",
+    "gigSheet": {
+      "eventName": "NightShift Vol. 13 — Jungle & UKG",
+      "date": "Saturday 24 May 2026",
+      "venue": "The Substation",
+      "venueAddress": "21 Surrey Crescent, Newton, Auckland",
+      "artistName": "SHIRIN",
+      "slotTime": "01:00 – 03:00",
+      "soundcheckTime": "00:00",
+      "loadInTime": "23:30",
+      "fee": 600,
+      "currency": "NZD",
+      "advanceAmount": 300,
+      "advanceDueDate": "10 May 2026",
+      "promoterContact": "NightShift Collective — hello@nightshiftauckland.nz / 021 555 1234",
+      "venueContact": "The Substation Production — production@thesubstation.nz / 09 555 9876",
+      "hospitalityRider": "2× bottles of water (cold), 1× bar tab up to $50 NZD, meal if arriving before midnight",
+      "technicalRider": "CDJ-3000 × 2, Technics SL-1210 × 1 (vinyl capable), Allen & Heath Xone:96, RCA outputs required"
+    },
+    "paymentInstalments": [
+      {
+        "id": "pay-002a",
+        "label": "Advance (50%)",
+        "amount": 300,
+        "currency": "NZD",
+        "dueDate": "2026-05-10",
+        "paid": false
+      },
+      {
+        "id": "pay-002b",
+        "label": "Balance on night",
+        "amount": 300,
+        "currency": "NZD",
+        "dueDate": "2026-05-24",
+        "paid": false
+      }
+    ],
+    "createdAt": "2026-04-25T10:00:00Z",
+    "updatedAt": "2026-04-25T10:00:00Z"
+  }
+]

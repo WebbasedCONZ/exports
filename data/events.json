@@ -1,0 +1,158 @@
+[
+  {
+    "id": "event-001",
+    "title": "NightShift Vol. 13 — Jungle & UKG",
+    "slug": "nightshift-vol-13",
+    "promoterId": "promoter-001",
+    "venueId": "venue-001",
+    "date": "2026-05-24",
+    "doorsOpen": "21:00",
+    "slots": [
+      {
+        "id": "slot-001a",
+        "slotType": "Opening",
+        "startTime": "21:00",
+        "endTime": "23:00",
+        "genres": ["UKG", "Garage"],
+        "setDurationMinutes": 120,
+        "fee": 250,
+        "currency": "NZD",
+        "notes": "Warm-up slot — focus on building the floor from minimal attendance. Must be comfortable reading an early crowd."
+      },
+      {
+        "id": "slot-001b",
+        "slotType": "Peak Time",
+        "startTime": "01:00",
+        "endTime": "03:00",
+        "genres": ["Jungle", "140"],
+        "setDurationMinutes": 120,
+        "fee": 600,
+        "currency": "NZD",
+        "notes": "Peak time headliner slot. Looking for proven stage presence with dark, dense selections."
+      }
+    ],
+    "description": "NightShift returns to The Substation for our annual Jungle & UKG celebration. Thirteen editions in, we're not slowing down. Two rooms, two vibes — opening UK-flavoured selections giving way to peak-time jungle pressure. Tickets on the door and via Humanitix.",
+    "posterImageUrl": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+    "genres": ["Jungle", "UKG", "140", "Garage"],
+    "status": "Open",
+    "blindApplications": true,
+    "applicationDeadline": "2026-05-10",
+    "ticketUrl": "https://humanitix.com",
+    "createdAt": "2026-04-20T00:00:00Z",
+    "updatedAt": "2026-04-20T00:00:00Z"
+  },
+  {
+    "id": "event-002",
+    "title": "Basin Nights — May Edition",
+    "slug": "basin-nights-may",
+    "promoterId": "promoter-002",
+    "venueId": "venue-002",
+    "date": "2026-05-31",
+    "doorsOpen": "22:00",
+    "slots": [
+      {
+        "id": "slot-002a",
+        "slotType": "Warm-up",
+        "startTime": "22:00",
+        "endTime": "00:00",
+        "genres": ["Techno", "Electro"],
+        "setDurationMinutes": 120,
+        "fee": 400,
+        "currency": "NZD",
+        "notes": "Industrial-leaning warm-up. Think pre-peak Berghain vibes — functional but uncompromising."
+      },
+      {
+        "id": "slot-002b",
+        "slotType": "Peak Time",
+        "startTime": "00:00",
+        "endTime": "04:00",
+        "genres": ["Techno", "Industrial"],
+        "setDurationMinutes": 240,
+        "fee": 1200,
+        "currency": "NZD",
+        "notes": "4-hour headliner slot. Artist must be able to sustain a room for the duration. No requests, no compromises."
+      }
+    ],
+    "description": "Basin Nights continues its monthly programming at Viaduct Warehouse. May's edition focuses on the harder end of techno and industrial electronics. We expect full commitment from artists we book — this is not a background music environment.",
+    "posterImageUrl": "https://images.unsplash.com/photo-1504509546545-e000b4a62425?w=800&q=80",
+    "genres": ["Techno", "Industrial", "Electro"],
+    "status": "Open",
+    "blindApplications": false,
+    "applicationDeadline": "2026-05-15",
+    "ticketUrl": "https://iticket.co.nz",
+    "createdAt": "2026-04-15T00:00:00Z",
+    "updatedAt": "2026-04-15T00:00:00Z"
+  },
+  {
+    "id": "event-003",
+    "title": "Sound Garden — New Talent Night",
+    "slug": "sound-garden-new-talent",
+    "promoterId": "promoter-003",
+    "venueId": "venue-003",
+    "date": "2026-06-07",
+    "doorsOpen": "21:00",
+    "slots": [
+      {
+        "id": "slot-003a",
+        "slotType": "Opening",
+        "startTime": "21:00",
+        "endTime": "22:30",
+        "genres": ["Garage", "House"],
+        "setDurationMinutes": 90,
+        "fee": 150,
+        "currency": "NZD",
+        "notes": "New talent focus. We're open to first-time gig applications from artists who can demonstrate their capability via a mix link."
+      },
+      {
+        "id": "slot-003b",
+        "slotType": "Closing",
+        "startTime": "00:30",
+        "endTime": "02:00",
+        "genres": ["Afrobeats", "UKG"],
+        "setDurationMinutes": 90,
+        "fee": 200,
+        "currency": "NZD",
+        "notes": "Closing set — bring the energy home."
+      }
+    ],
+    "description": "Sound Garden's new talent showcase returns. Specifically seeking artists-identifying as women or non-binary for this edition. All genres welcome but preference for UK-influenced sounds. Christchurch-based artists prioritised but open to travel if the fit is right.",
+    "posterImageUrl": "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&q=80",
+    "genres": ["Garage", "House", "Afrobeats", "UKG"],
+    "status": "Open",
+    "blindApplications": false,
+    "applicationDeadline": "2026-05-25",
+    "ticketUrl": null,
+    "createdAt": "2026-04-25T00:00:00Z",
+    "updatedAt": "2026-04-25T00:00:00Z"
+  },
+  {
+    "id": "event-004",
+    "title": "NightShift Vol. 12 — Confirmed",
+    "slug": "nightshift-vol-12",
+    "promoterId": "promoter-001",
+    "venueId": "venue-001",
+    "date": "2026-03-15",
+    "doorsOpen": "21:00",
+    "slots": [
+      {
+        "id": "slot-004a",
+        "slotType": "Opening",
+        "startTime": "21:00",
+        "endTime": "23:00",
+        "genres": ["UKG"],
+        "setDurationMinutes": 120,
+        "fee": 250,
+        "currency": "NZD",
+        "notes": ""
+      }
+    ],
+    "description": "Past confirmed event — used for settlement demo.",
+    "posterImageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+    "genres": ["UKG"],
+    "status": "Confirmed",
+    "blindApplications": false,
+    "applicationDeadline": "2026-03-01",
+    "createdAt": "2026-02-01T00:00:00Z",
+    "updatedAt": "2026-03-15T00:00:00Z"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "promoter-001",
+    "displayName": "NightShift Collective",
+    "slug": "nightshift-collective",
+    "bio": "Auckland's leading underground club night collective, running since 2019. Known for booking internationally respected artists alongside local talent. We run quarterly events at rotating venues with a focus on sound system quality and intentional programming.",
+    "location": { "city": "Auckland", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1571266028243-d220c6a6c88f?w=600&q=80",
+    "pastEventsGallery": [
+      { "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80", "caption": "NightShift Vol. 12 — Jungle & UKG Edition", "date": "2024-01-20" },
+      { "imageUrl": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80", "caption": "NightShift Vol. 11 — Techno Takeover", "date": "2023-10-14" },
+      { "imageUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80", "caption": "NightShift Vol. 10 — Anniversary", "date": "2023-07-01" },
+      { "imageUrl": "https://images.unsplash.com/photo-1574169208507-84376144848b?w=800&q=80", "caption": "NightShift Vol. 9 — Drum & Bass Special", "date": "2023-04-08" }
+    ],
+    "preferences": {
+      "preferredGenres": ["Jungle", "UKG", "140", "Techno", "Drum & Bass"],
+      "preferredLocations": ["Auckland", "Wellington"],
+      "preferredGenderIdentities": ["Woman", "Non-binary"],
+      "preferredExperienceLevels": ["Mid-level", "Established"]
+    },
+    "trustedPartner": true,
+    "totalEventsHosted": 14,
+    "socialLinks": { "instagram": "https://instagram.com", "ra": "https://ra.co" },
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-03-01T00:00:00Z"
+  },
+  {
+    "id": "promoter-002",
+    "displayName": "Basin Nights",
+    "slug": "basin-nights",
+    "bio": "Wellington-based promoters specialising in industrial, techno, and experimental electronics. We run monthly events at The Viaduct and partner venues, focused on creating a space for serious music in NZ's capital.",
+    "location": { "city": "Wellington", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80",
+    "pastEventsGallery": [
+      { "imageUrl": "https://images.unsplash.com/photo-1504509546545-e000b4a62425?w=800&q=80", "caption": "Basin Nights — March 2024", "date": "2024-03-02" },
+      { "imageUrl": "https://images.unsplash.com/photo-1598387993441-a364f854cfbe?w=800&q=80", "caption": "Basin Nights — February 2024", "date": "2024-02-03" },
+      { "imageUrl": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&q=80", "caption": "Basin Nights — January 2024", "date": "2024-01-06" }
+    ],
+    "preferences": {
+      "preferredGenres": ["Industrial", "Techno", "Electro"],
+      "preferredLocations": ["Wellington", "Auckland"],
+      "preferredGenderIdentities": ["Man", "Woman", "Non-binary", "Prefer not to say"],
+      "preferredExperienceLevels": ["Established", "Headliner"]
+    },
+    "trustedPartner": true,
+    "totalEventsHosted": 28,
+    "socialLinks": { "instagram": "https://instagram.com", "website": "https://example.com" },
+    "createdAt": "2023-06-01T00:00:00Z",
+    "updatedAt": "2024-03-05T00:00:00Z"
+  },
+  {
+    "id": "promoter-003",
+    "displayName": "Sound Garden NZ",
+    "slug": "sound-garden-nz",
+    "bio": "Emerging promoters in Christchurch running genre-forward events with a focus on giving new talent platform time. We prioritise artist welfare and fair pay in all our bookings.",
+    "location": { "city": "Christchurch", "country": "New Zealand" },
+    "profilePhoto": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80",
+    "pastEventsGallery": [
+      { "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80", "caption": "Sound Garden Vol. 3 — House & Garage", "date": "2024-02-17" },
+      { "imageUrl": "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&q=80", "caption": "Sound Garden Vol. 2 — New Talent Night", "date": "2023-11-25" }
+    ],
+    "preferences": {
+      "preferredGenres": ["House", "Garage", "Afrobeats", "UKG"],
+      "preferredLocations": ["Christchurch", "Auckland"],
+      "preferredGenderIdentities": ["Woman", "Non-binary"],
+      "preferredExperienceLevels": ["Emerging", "Mid-level"]
+    },
+    "trustedPartner": false,
+    "totalEventsHosted": 5,
+    "socialLinks": { "instagram": "https://instagram.com" },
+    "createdAt": "2023-09-01T00:00:00Z",
+    "updatedAt": "2024-02-17T00:00:00Z"
+  }
+]

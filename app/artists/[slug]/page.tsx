@@ -1,0 +1,186 @@
+'use client';
+import { useParams } from 'next/navigation';
+import { useArtist } from '@/hooks/useArtists';
+import { useEvents } from '@/hooks/useEvents';
+import GenreTagList from '@/components/profiles/GenreTagList';
+import EquipmentChecklist from '@/components/profiles/EquipmentChecklist';
+import MediaEmbeds from '@/components/profiles/MediaEmbeds';
+import PhotoGrid from '@/components/profiles/PhotoGrid';
+import EventCard from '@/components/events/EventCard';
+import { useVenues } from '@/hooks/useVenues';
+import { MapPin, Share2, ExternalLink, Music } from 'lucide-react';
+import { formatCurrency } from '@/lib/utils';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function ArtistProfilePage() {
+  const { slug } = useParams<{ slug: string }>();
+  const artist = useArtist(slug);
+  const { events } = useEvents();
+  const { venues } = useVenues();
+
+  if (!artist) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-20 text-center text-[#444]">
+        <p>Loading artist...</p>
+      </div>
+    );
+  }
+
+  const openEvents = events.filter(
+    (e) => e.status === 'Open' && e.genres.some((g) => artist.genres.includes(g))
+  );
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      {/* Hero */}
+      <div className="relative h-48 sm:h-64 rounded-md overflow-hidden mb-0 bg-[#1a1a1a]">
+        <Image src={artist.profilePhoto} alt={artist.displayName} fill className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
+      </div>
+
+      {/* Profile header row */}
+      <div className="flex flex-col sm:flex-row sm:items-end gap-4 -mt-12 relative z-10 px-2 mb-8">
+        <div className="w-24 h-24 rounded-md overflow-hidden border-4 border-[#0a0a0a] flex-shrink-0 bg-[#1a1a1a]">
+          <Image src={artist.profilePhoto} alt={artist.displayName} width={96} height={96} className="object-cover w-full h-full" />
+        </div>
+        <div className="flex-1 pb-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <h1 className="text-2xl font-bold tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              {artist.displayName}
+            </h1>
+            <span className="text-xs text-[#555] border border-[#252525] px-2 py-0.5 rounded-sm">{artist.experienceLevel}</span>
+          </div>
+          <div className="flex items-center gap-1 text-xs text-[#555]">
+            <MapPin size={11} />
+            {artist.location.city}, {artist.location.country}
+          </div>
+        </div>
+        <div className="flex items-center gap-2 pb-1">
+          {artist.socialLinks.instagram && (
+            <a href={artist.socialLinks.instagram} target="_blank" rel="noopener noreferrer"
+              className="p-2 border border-[#252525] rounded-sm text-[#555] hover:text-[#ededed] hover:border-[#3a3a3a] transition-colors">
+              <Share2 size={14} />
+            </a>
+          )}
+          {artist.socialLinks.bandcamp && (
+            <a href={artist.socialLinks.bandcamp} target="_blank" rel="noopener noreferrer"
+              className="p-2 border border-[#252525] rounded-sm text-[#555] hover:text-[#ededed] hover:border-[#3a3a3a] transition-colors">
+              <Music size={14} />
+            </a>
+          )}
+          <div className="text-right">
+            <p className="text-xs text-[#555]">From</p>
+            <p className="text-sm font-semibold text-[#c6ff00]">
+              {formatCurrency(artist.fee.minimum, artist.fee.currency)}
+              {artist.fee.negotiable && <span className="text-[#555] text-xs font-normal ml-1">neg.</span>}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left column */}
+        <div className="lg:col-span-2 space-y-8">
+          {/* Bio */}
+          <section>
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555] mb-3">Bio</h2>
+            <p className="text-sm text-[#aaa] leading-relaxed">{artist.bio}</p>
+          </section>
+
+          {/* Genres */}
+          <section>
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555] mb-3">Genres</h2>
+            <GenreTagList genres={artist.genres} />
+          </section>
+
+          {/* Mixes */}
+          {artist.embeds?.length > 0 && (
+            <section>
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555] mb-3">Recent Sets</h2>
+              <MediaEmbeds embeds={artist.embeds} />
+            </section>
+          )}
+
+          {/* Photo feed */}
+          {artist.photoGallery?.length > 0 && (
+            <section>
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555] mb-3">Photos</h2>
+              <PhotoGrid photos={artist.photoGallery} />
+            </section>
+          )}
+
+          {/* Matching open gigs */}
+          {openEvents.length > 0 && (
+            <section>
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555] mb-3">
+                Open Gigs That Match This Artist
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {openEvents.slice(0, 4).map((e) => {
+                  const venue = venues.find((v) => v.id === e.venueId);
+                  return <EventCard key={e.id} event={e} venueName={venue?.name} />;
+                })}
+              </div>
+            </section>
+          )}
+        </div>
+
+        {/* Right sidebar */}
+        <div className="space-y-6">
+          {/* Equipment */}
+          <section>
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555] mb-3">Equipment Proficiency</h2>
+            <EquipmentChecklist equipment={artist.equipment} />
+            {artist.hardwareRequirements && (
+              <div className="mt-3 bg-[#1a1a1a] border border-[#252525] rounded-sm p-3 text-xs text-[#666] leading-relaxed">
+                <p className="text-[#555] font-medium mb-1 uppercase tracking-wide text-[10px]">Hardware Requirements</p>
+                {artist.hardwareRequirements}
+              </div>
+            )}
+          </section>
+
+          {/* Fee */}
+          <section className="bg-[#141414] border border-[#252525] rounded-md p-4">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555] mb-3">Booking</h2>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-[#555]">Minimum fee</span>
+                <span className="text-[#c6ff00] font-semibold">{formatCurrency(artist.fee.minimum, artist.fee.currency)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#555]">Negotiable</span>
+                <span className={artist.fee.negotiable ? 'text-[#c6ff00]' : 'text-[#555]'}>
+                  {artist.fee.negotiable ? 'Yes' : 'No'}
+                </span>
+              </div>
+            </div>
+            <Link
+              href={`/events?artist=${artist.id}`}
+              className="mt-4 w-full flex items-center justify-center gap-2 py-2 bg-[#c6ff00] text-black text-sm font-semibold rounded-sm hover:bg-[#b5ee00] transition-colors"
+            >
+              Post a Gig <ExternalLink size={13} />
+            </Link>
+          </section>
+
+          {/* Gender / experience */}
+          <section className="bg-[#141414] border border-[#252525] rounded-md p-4 space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-[#555]">Experience</span>
+              <span className="text-[#ededed]">{artist.experienceLevel}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-[#555]">Identity</span>
+              <span className="text-[#ededed]">{artist.genderIdentity}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-[#555]">Based</span>
+              <span className="text-[#ededed]">{artist.location.city}</span>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
