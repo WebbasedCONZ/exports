@@ -1,40 +1,78 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import TrustedBadge from './TrustedBadge';
-import GenreTagList from './GenreTagList';
-import { MapPin, Calendar } from 'lucide-react';
-import type { Promoter } from '@/types';
+import { MapPin, Calendar, ArrowRight, ShieldCheck } from 'lucide-react';
 
-export default function PromoterCard({ promoter }: { promoter: Promoter }) {
+const GENRE_COLORS: Record<string, string> = {
+  'Techno': '#1d4ed8', 'House': '#b45309', 'Jungle': '#c2410c',
+  'Drum & Bass': '#065f46', 'UKG': '#0d9488', '140': '#7c3aed',
+  'Grime': '#be123c', 'Garage': '#0369a1', 'Afrobeats': '#d97706',
+  'Breaks': '#7e22ce', 'Industrial': '#6b21a8', 'Electro': '#1e40af',
+};
+
+export default function PromoterCard({ promoter }: { promoter: any }) {
+  const name = promoter.profile?.display_name ?? 'Unknown Promoter';
+  const slug = promoter.profile?.slug ?? promoter.id;
+  const photo = promoter.profile?.profile_photo;
+  const genres: string[] = promoter.preferred_genres ?? [];
+  const city = promoter.city ?? '';
+
   return (
-    <Link href={`/promoters/${promoter.slug}`} className="block group">
-      <div className="bg-[#141414] border border-[#252525] rounded-md overflow-hidden transition-all duration-200 hover:border-[#3a3a3a] hover:bg-[#1a1a1a]">
-        <div className="aspect-video relative overflow-hidden bg-[#1a1a1a]">
-          {promoter.pastEventsGallery[0] ? (
-            <Image
-              src={promoter.pastEventsGallery[0].imageUrl}
-              alt={promoter.displayName}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
+    <Link href={`/promoters/${slug}`} className="brutal-card block group">
+      <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
+        {/* Image */}
+        <div className="aspect-video relative overflow-hidden bg-[#111]">
+          {photo ? (
+            <Image src={photo} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
           ) : (
-            <div className="absolute inset-0 bg-[#1a1a1a]" />
+            <div className="absolute inset-0"
+              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #0d2a1a 50%, #0a0a0a 100%)' }} />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-3 left-3">
-            {promoter.trustedPartner && <TrustedBadge />}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+
+          {/* Trusted badge */}
+          {promoter.trusted_partner && (
+            <div className="absolute top-3 left-3">
+              <span className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-[#ffd700]/20 border border-[#ffd700]/40 text-[#ffd700] rounded-sm">
+                <ShieldCheck size={9} />
+                Trusted
+              </span>
+            </div>
+          )}
+
+          <div className="absolute top-3 right-3">
+            <ArrowRight size={14} className="text-white/20 group-hover:text-[#3d52ff] transition-colors" />
           </div>
         </div>
-        <div className="p-4">
-          <div className="flex items-start justify-between mb-2">
-            <h3 className="font-bold text-base">{promoter.displayName}</h3>
+
+        <div className="p-5">
+          <h3 className="font-black text-base uppercase tracking-tight text-white leading-tight mb-2"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            {name}
+          </h3>
+
+          <div className="flex items-center gap-4 text-[11px] text-white/30 mb-3">
+            {city && (
+              <span className="flex items-center gap-1"><MapPin size={10} />{city}</span>
+            )}
+            {promoter.total_events_hosted > 0 && (
+              <span className="flex items-center gap-1"><Calendar size={10} />{promoter.total_events_hosted} events</span>
+            )}
           </div>
-          <div className="flex items-center gap-3 text-xs text-[#555] mb-3">
-            <span className="flex items-center gap-1"><MapPin size={11} />{promoter.location.city}</span>
-            <span className="flex items-center gap-1"><Calendar size={11} />{promoter.totalEventsHosted} events</span>
-          </div>
-          <p className="text-xs text-[#666] line-clamp-2 leading-relaxed mb-3">{promoter.bio}</p>
-          <GenreTagList genres={promoter.preferences.preferredGenres.slice(0, 3)} size="sm" />
+
+          {promoter.bio && (
+            <p className="text-xs text-white/30 line-clamp-2 leading-relaxed mb-4">{promoter.bio}</p>
+          )}
+
+          {genres.length > 0 && (
+            <div className="flex flex-wrap gap-1 pt-3 border-t border-white/5">
+              {genres.slice(0, 3).map((g: string) => (
+                <span key={g} className="text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-sm text-white"
+                  style={{ background: GENRE_COLORS[g] ?? '#3d52ff' }}>
+                  {g}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Link>

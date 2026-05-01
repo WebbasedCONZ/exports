@@ -23,27 +23,28 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 border-b border-[#1a1a1a] bg-[#0a0a0a]/90 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-40 border-b border-white/[0.06] bg-black/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-7 h-7 bg-[#c6ff00] rounded-sm flex items-center justify-center">
-            <Zap size={14} className="text-black" fill="black" />
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="w-7 h-7 bg-[#3d52ff] rounded-sm flex items-center justify-center">
+            <Zap size={14} className="text-white" fill="white" />
           </div>
-          <span className="font-bold text-sm tracking-[0.15em] uppercase text-[#ededed] group-hover:text-[#c6ff00] transition-colors">
+          <span className="font-black text-sm tracking-[0.2em] uppercase text-white group-hover:text-[#3d52ff] transition-colors"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             EXPORTS
           </span>
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-0.5">
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href}
               className={cn(
-                'text-sm px-3 py-1.5 rounded-sm transition-colors',
+                'text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm transition-colors',
                 pathname.startsWith(l.href)
-                  ? 'text-[#c6ff00] bg-[#c6ff00]/8'
-                  : 'text-[#888] hover:text-[#ededed]'
+                  ? 'text-[#3d52ff] bg-[#3d52ff]/8'
+                  : 'text-white/30 hover:text-white'
               )}>
               {l.label}
             </Link>
@@ -55,42 +56,46 @@ export default function Nav() {
           {profile ? (
             <>
               {/* Messages */}
-              <Link href="/messages" className="relative p-2 text-[#555] hover:text-[#ededed] transition-colors">
+              <Link href="/messages" className="relative p-2 text-white/25 hover:text-white transition-colors">
                 <MessageSquare size={17} />
                 {unread > 0 && (
-                  <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#c6ff00] text-black text-[9px] font-bold flex items-center justify-center">
+                  <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#3d52ff] text-white text-[9px] font-bold flex items-center justify-center">
                     {unread > 9 ? '9+' : unread}
                   </span>
                 )}
               </Link>
 
               {/* Settings */}
-              <Link href="/settings/team" className="p-2 text-[#555] hover:text-[#ededed] transition-colors">
+              <Link href="/settings/team" className="p-2 text-white/25 hover:text-white transition-colors">
                 <Settings size={17} />
               </Link>
 
               {/* Avatar → Dashboard */}
               <Link href="/dashboard" className="flex items-center gap-2 group">
-                <span className="hidden sm:block text-xs text-[#555] group-hover:text-[#888] transition-colors">
+                <span className="hidden sm:block text-xs text-white/25 group-hover:text-white/50 transition-colors">
                   {profile.display_name}
                 </span>
-                <div className="w-8 h-8 rounded-full overflow-hidden bg-[#252525] border border-[#333]">
+                <div className="w-8 h-8 rounded-full overflow-hidden bg-[#1a1a1a] border border-white/10">
                   {profile.profile_photo
                     ? <Image src={profile.profile_photo} alt={profile.display_name} width={32} height={32} className="object-cover" />
-                    : <div className="w-full h-full flex items-center justify-center text-xs font-bold text-[#555]">{profile.display_name?.[0]}</div>
+                    : <div className="w-full h-full flex items-center justify-center text-xs font-black text-white/40"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {profile.display_name?.[0]}
+                      </div>
                   }
                 </div>
               </Link>
             </>
           ) : (
             <Link href="/auth/login"
-              className="text-sm px-4 py-1.5 bg-[#c6ff00] text-black font-medium rounded-sm hover:bg-[#b5ee00] transition-colors">
+              className="text-xs font-black uppercase tracking-widest px-5 py-2 bg-[#3d52ff] text-white rounded-sm hover:bg-[#5566ff] transition-colors"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Sign In
             </Link>
           )}
 
           {/* Mobile toggle */}
-          <button className="md:hidden text-[#888] hover:text-[#ededed] transition-colors ml-1"
+          <button className="md:hidden text-white/30 hover:text-white transition-colors ml-1"
             onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -99,32 +104,39 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-[#1a1a1a] bg-[#0a0a0a]">
+        <div className="md:hidden border-t border-white/[0.06] bg-black">
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href} onClick={() => setMobileOpen(false)}
               className={cn(
-                'block px-6 py-3 text-sm border-b border-[#1a1a1a] transition-colors',
-                pathname.startsWith(l.href) ? 'text-[#c6ff00]' : 'text-[#888]'
+                'block px-6 py-3.5 text-xs font-bold uppercase tracking-widest border-b border-white/[0.06] transition-colors',
+                pathname.startsWith(l.href) ? 'text-[#3d52ff]' : 'text-white/30'
               )}>
               {l.label}
             </Link>
           ))}
-          {profile && (
+          {profile ? (
             <>
               <Link href="/messages" onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-between px-6 py-3 text-sm text-[#888] border-b border-[#1a1a1a]">
+                className="flex items-center justify-between px-6 py-3.5 text-xs text-white/30 font-bold uppercase tracking-widest border-b border-white/[0.06]">
                 Messages
-                {unread > 0 && <span className="w-5 h-5 rounded-full bg-[#c6ff00] text-black text-[10px] font-bold flex items-center justify-center">{unread}</span>}
+                {unread > 0 && <span className="w-5 h-5 rounded-full bg-[#3d52ff] text-white text-[10px] font-bold flex items-center justify-center">{unread}</span>}
               </Link>
               <Link href="/settings/team" onClick={() => setMobileOpen(false)}
-                className="block px-6 py-3 text-sm text-[#888] border-b border-[#1a1a1a]">
+                className="block px-6 py-3.5 text-xs text-white/30 font-bold uppercase tracking-widest border-b border-white/[0.06]">
                 Settings
               </Link>
               <Link href="/dashboard" onClick={() => setMobileOpen(false)}
-                className="block px-6 py-3 text-sm text-[#888]">
+                className="block px-6 py-3.5 text-xs text-white/30 font-bold uppercase tracking-widest">
                 Dashboard
               </Link>
             </>
+          ) : (
+            <div className="px-6 py-4">
+              <Link href="/auth/login" onClick={() => setMobileOpen(false)}
+                className="block text-center py-3 bg-[#3d52ff] text-white text-xs font-black uppercase tracking-widest rounded-sm">
+                Sign In
+              </Link>
+            </div>
           )}
         </div>
       )}

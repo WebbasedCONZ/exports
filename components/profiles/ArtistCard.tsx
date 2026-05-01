@@ -1,42 +1,98 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import GenreTagList from './GenreTagList';
-import { MapPin } from 'lucide-react';
-import type { Artist } from '@/types';
+import { MapPin, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
-export default function ArtistCard({ artist }: { artist: Artist }) {
+// Genre color map for pills
+const GENRE_COLORS: Record<string, string> = {
+  'Techno': '#1d4ed8', 'House': '#b45309', 'Jungle': '#c2410c',
+  'Drum & Bass': '#065f46', 'UKG': '#0d9488', '140': '#7c3aed',
+  'Grime': '#be123c', 'Garage': '#0369a1', 'Afrobeats': '#d97706',
+  'Breaks': '#7e22ce', 'Industrial': '#6b21a8', 'Electro': '#1e40af',
+};
+
+export default function ArtistCard({ artist }: { artist: any }) {
+  const name = artist.profile?.display_name ?? 'Unknown Artist';
+  const slug = artist.profile?.slug ?? artist.id;
+  const photo = artist.profile?.profile_photo;
+  const genres: string[] = artist.genres ?? [];
+  const city = artist.city ?? '';
+  const country = artist.country ?? '';
+
   return (
-    <Link href={`/artists/${artist.slug}`} className="block group">
-      <div className="bg-[#141414] border border-[#252525] rounded-md overflow-hidden transition-all duration-200 hover:border-[#3a3a3a] hover:bg-[#1a1a1a]">
-        <div className="aspect-[4/3] relative overflow-hidden bg-[#1a1a1a]">
-          <Image
-            src={artist.profilePhoto}
-            alt={artist.displayName}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-3">
-            <GenreTagList genres={artist.genres} size="sm" />
+    <Link href={`/artists/${slug}`} className="brutal-card block group">
+      <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
+        {/* Image / Placeholder */}
+        <div className="aspect-[4/3] relative overflow-hidden bg-[#111]">
+          {photo ? (
+            <Image src={photo} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+          ) : (
+            <div className="absolute inset-0 flex items-end p-3"
+              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #0d1a4a 50%, #1a0a3a 100%)' }}>
+              <div className="w-full h-px bg-[#3d52ff]/30" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+          {/* Genre pills on image */}
+          <div className="absolute bottom-0 left-0 right-0 p-3 flex flex-wrap gap-1">
+            {genres.slice(0, 2).map((g) => (
+              <span key={g} className="text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-sm text-white"
+                style={{ background: GENRE_COLORS[g] ?? '#3d52ff' }}>
+                {g}
+              </span>
+            ))}
+            {genres.length > 2 && (
+              <span className="text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-sm text-white/50 bg-white/10">
+                +{genres.length - 2}
+              </span>
+            )}
           </div>
+
+          {/* Available tonight badge */}
+          {artist.available_tonight && (
+            <div className="absolute top-3 right-3">
+              <span className="text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-[#ff3333] text-white rounded-sm flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                Tonight
+              </span>
+            </div>
+          )}
         </div>
-        <div className="p-4">
-          <div className="flex items-start justify-between gap-2 mb-1">
-            <h3 className="font-bold text-base tracking-wide">{artist.displayName}</h3>
-            <span className="text-xs text-[#555] flex-shrink-0 mt-0.5">{artist.experienceLevel}</span>
+
+        <div className="p-5">
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <h3 className="font-black text-base uppercase tracking-tight text-white leading-tight"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              {name}
+            </h3>
+            <ArrowRight size={14} className="text-white/20 group-hover:text-[#3d52ff] group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-0.5" />
           </div>
-          <div className="flex items-center gap-1 text-xs text-[#555] mb-2">
-            <MapPin size={11} />
-            {artist.location.city}, {artist.location.country}
-          </div>
-          <p className="text-xs text-[#666] line-clamp-2 leading-relaxed mb-3">{artist.bio}</p>
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-[#555]">From</span>
-            <span className="text-[#c6ff00] font-medium">
-              {formatCurrency(artist.fee.minimum, artist.fee.currency)}
-              {artist.fee.negotiable && <span className="text-[#555] ml-1">(neg.)</span>}
+
+          {(city || country) && (
+            <div className="flex items-center gap-1 text-[11px] text-white/30 mb-3">
+              <MapPin size={10} />
+              {[city, country].filter(Boolean).join(', ')}
+            </div>
+          )}
+
+          {artist.bio && (
+            <p className="text-xs text-white/30 line-clamp-2 leading-relaxed mb-4">{artist.bio}</p>
+          )}
+
+          <div className="flex items-center justify-between pt-3 border-t border-white/5">
+            <span className="text-[10px] text-white/20 uppercase tracking-widest">
+              {artist.experience_level ?? 'Artist'}
             </span>
+            {artist.fee_minimum ? (
+              <span className="text-sm font-black text-[#3d52ff]"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                {formatCurrency(artist.fee_minimum, artist.fee_currency ?? 'NZD')}
+                {artist.fee_negotiable && <span className="text-white/20 text-[10px] font-normal ml-1">neg.</span>}
+              </span>
+            ) : (
+              <span className="text-[10px] text-white/20">POA</span>
+            )}
           </div>
         </div>
       </div>
