@@ -1,24 +1,22 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
-// Curated dark underground music Unsplash photos
+// Local verified rave/DJ photos — no random Unsplash surprises
 const ARTIST_PHOTOS = [
-  'photo-1493225457124-a3eb161ffa5f', // DJ performing
-  'photo-1492684223066-81342ee5ff30', // rave crowd dark
-  'photo-1516450360452-9312f5e86fc7', // concert strobe blue
-  'photo-1574068468686-94e0c68a3e35', // red lit crowd
-  'photo-1470229722913-7c0e2dbbafd3', // concert stage
-  'photo-1598300042247-d088f8ab3a91', // dark nightclub
-  'photo-1459749411175-04bf5292ceea', // concert lights
-  'photo-1524368535928-5b5e00ddc76b', // crowd hands up
+  '/images/artists/a1.jpg', // DJ at decks B&W
+  '/images/artists/a2.jpg', // rave crowd
+  '/images/artists/a3.jpg', // concert strobe
+  '/images/artists/a4.jpg', // concert stage
+  '/images/artists/a5.jpg', // stage lights
+  '/images/artists/a6.jpg', // crowd hands
+  '/images/artists/a7.jpg', // festival crowd
+  '/images/artists/a8.jpg', // dark club
 ];
 
 function getFallbackPhoto(id: string): string {
   const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const photoId = ARTIST_PHOTOS[hash % ARTIST_PHOTOS.length];
-  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+  return ARTIST_PHOTOS[hash % ARTIST_PHOTOS.length];
 }
 
 // Genre color map for pills
@@ -42,11 +40,12 @@ export default function ArtistCard({ artist }: { artist: any }) {
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         {/* Image / Placeholder */}
         <div className="aspect-[4/3] relative overflow-hidden bg-[#111]">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={photo ?? getFallbackPhoto(artist.id)}
             alt={name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
+            onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a1.jpg'; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 

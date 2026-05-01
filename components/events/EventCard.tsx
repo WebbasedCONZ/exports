@@ -1,23 +1,21 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Calendar, MapPin, EyeOff, ArrowRight } from 'lucide-react';
 import { formatDate, statusColor, daysUntil } from '@/lib/utils';
 
 const EVENT_PHOTOS = [
-  'photo-1516450360452-9312f5e86fc7',
-  'photo-1540575467063-178a50c2df87',
-  'photo-1571266028243-e4733b0f0bb0',
-  'photo-1598300042247-d088f8ab3a91',
-  'photo-1459749411175-04bf5292ceea',
-  'photo-1493225457124-a3eb161ffa5f',
-  'photo-1524368535928-5b5e00ddc76b',
-  'photo-1481883836041-bba898e2b9e5',
+  '/images/artists/a3.jpg',
+  '/images/artists/a7.jpg',
+  '/images/artists/a2.jpg',
+  '/images/artists/a5.jpg',
+  '/images/artists/a1.jpg',
+  '/images/artists/a6.jpg',
+  '/images/artists/a4.jpg',
+  '/images/artists/a8.jpg',
 ];
 
 function getFallbackPhoto(id: string): string {
   const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const photoId = EVENT_PHOTOS[hash % EVENT_PHOTOS.length];
-  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+  return EVENT_PHOTOS[hash % EVENT_PHOTOS.length];
 }
 
 const GENRE_COLORS: Record<string, string> = {
@@ -38,11 +36,12 @@ export default function EventCard({ event, venueName }: { event: any; venueName?
     <Link href={`/events/${event.slug}`} className="brutal-card block group">
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         <div className="aspect-video relative overflow-hidden bg-[#111]">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={poster ?? getFallbackPhoto(event.id)}
             alt={event.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
+            onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a3.jpg'; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 

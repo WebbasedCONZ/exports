@@ -1,20 +1,18 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { MapPin, Calendar, ArrowRight, ShieldCheck } from 'lucide-react';
 
 const PROMOTER_PHOTOS = [
-  'photo-1492684223066-81342ee5ff30', // rave crowd dark warehouse
-  'photo-1574068468686-94e0c68a3e35', // red orange crowd
-  'photo-1516450360452-9312f5e86fc7', // concert strobe blue
-  'photo-1470229722913-7c0e2dbbafd3', // concert stage wide
-  'photo-1598300042247-d088f8ab3a91', // dark club
-  'photo-1524368535928-5b5e00ddc76b', // crowd hands
+  '/images/artists/a2.jpg',
+  '/images/artists/a4.jpg',
+  '/images/artists/a7.jpg',
+  '/images/artists/a3.jpg',
+  '/images/artists/a8.jpg',
+  '/images/artists/a6.jpg',
 ];
 
 function getFallbackPhoto(id: string): string {
   const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const photoId = PROMOTER_PHOTOS[hash % PROMOTER_PHOTOS.length];
-  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+  return PROMOTER_PHOTOS[hash % PROMOTER_PHOTOS.length];
 }
 
 const GENRE_COLORS: Record<string, string> = {
@@ -36,11 +34,12 @@ export default function PromoterCard({ promoter }: { promoter: any }) {
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         {/* Image */}
         <div className="aspect-video relative overflow-hidden bg-[#111]">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={photo ?? getFallbackPhoto(promoter.id)}
             alt={name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
+            onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a2.jpg'; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 

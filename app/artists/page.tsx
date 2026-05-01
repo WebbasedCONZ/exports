@@ -37,8 +37,8 @@ export default function ArtistsPage() {
     <div className="min-h-screen bg-black">
       {/* Header photo strip */}
       <div className="relative h-40 overflow-hidden border-b border-white/5">
-        <img src="/images/hero.jpg" alt="" className="w-full h-full object-cover object-[50%_35%]"
-          onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=80'; }} />
+        <img src="/images/artists/a2.jpg" alt="" className="w-full h-full object-cover object-[50%_35%]"
+          onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a2.jpg'; }} />
         <div className="absolute inset-0 bg-black/70" />
       </div>
 

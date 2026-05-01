@@ -1,20 +1,18 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { MapPin, Users, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
 const VENUE_PHOTOS = [
-  'photo-1598300042247-d088f8ab3a91', // dark club interior
-  'photo-1574068468686-94e0c68a3e35', // warehouse crowd
-  'photo-1492684223066-81342ee5ff30', // raw concrete venue
-  'photo-1516450360452-9312f5e86fc7', // concert hall
-  'photo-1470229722913-7c0e2dbbafd3', // stage wide
+  '/images/artists/a8.jpg',
+  '/images/artists/a2.jpg',
+  '/images/artists/a4.jpg',
+  '/images/artists/a3.jpg',
+  '/images/artists/a7.jpg',
 ];
 
 function getFallbackPhoto(id: string): string {
   const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const photoId = VENUE_PHOTOS[hash % VENUE_PHOTOS.length];
-  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+  return VENUE_PHOTOS[hash % VENUE_PHOTOS.length];
 }
 
 export default function VenueCard({ venue }: { venue: any }) {
@@ -29,11 +27,12 @@ export default function VenueCard({ venue }: { venue: any }) {
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         {/* Image */}
         <div className="aspect-video relative overflow-hidden bg-[#111]">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={photo ?? getFallbackPhoto(venue.id)}
             alt={name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
+            onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a4.jpg'; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
