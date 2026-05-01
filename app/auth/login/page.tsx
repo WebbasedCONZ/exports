@@ -36,11 +36,11 @@ export default function LoginPage() {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
           if (role === 'artist') {
-            await supabase.from('artists').insert({ profile_id: user.id });
+            await (supabase.from('artists') as any).insert({ profile_id: user.id });
           } else if (role === 'promoter') {
-            await supabase.from('promoters').insert({ profile_id: user.id });
+            await (supabase.from('promoters') as any).insert({ profile_id: user.id });
           } else {
-            await supabase.from('venues').insert({ profile_id: user.id });
+            await (supabase.from('venues') as any).insert({ profile_id: user.id });
           }
         }
         router.push('/dashboard');

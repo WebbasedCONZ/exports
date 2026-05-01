@@ -28,7 +28,7 @@ export default function ArtistProfilePage() {
   }
 
   const openEvents = events.filter(
-    (e) => e.status === 'Open' && e.genres.some((g) => artist.genres.includes(g))
+    (e) => e.status === 'Open' && e.genres.some((g: string) => artist.genres.includes(g))
   );
 
   return (
