@@ -256,7 +256,7 @@ ON CONFLICT (id) DO NOTHING;
 -- ─────────────────────────────────────────
 INSERT INTO contracts (id, event_id, slot_id, artist_id, promoter_id, agreed_fee, currency, contract_text, artist_signed_at, promoter_signed_at, artist_signed_name, promoter_signed_name, status)
 VALUES
-  ('gggg0001-0000-0000-0000-000000000001',
+  ('abcd0001-0000-0000-0000-000000000001',
    'dddd0004-0000-0000-0000-000000000001', 'eeee0009-0000-0000-0000-000000000001',
    'aaaa0001-0000-0000-0000-000000000001', 'bbbb0001-0000-0000-0000-000000000001',
    300, 'NZD',
@@ -267,8 +267,8 @@ ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO payment_instalments (contract_id, label, amount, currency, due_date, paid, paid_at)
 VALUES
-  ('gggg0001-0000-0000-0000-000000000001', 'Deposit (50%)', 150, 'NZD', '2026-04-16', true, '2026-04-14 09:00:00+12'),
-  ('gggg0001-0000-0000-0000-000000000001', 'Balance (50%)', 150, 'NZD', '2026-05-03', true, '2026-05-03 22:30:00+12')
+  ('abcd0001-0000-0000-0000-000000000001', 'Deposit (50%)', 150, 'NZD', '2026-04-16', true, '2026-04-14 09:00:00+12'),
+  ('abcd0001-0000-0000-0000-000000000001', 'Balance (50%)', 150, 'NZD', '2026-05-03', true, '2026-05-03 22:30:00+12')
 ON CONFLICT DO NOTHING;
 
 -- ─────────────────────────────────────────
