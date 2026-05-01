@@ -22,18 +22,10 @@ const GENRE_COLORS: Record<string, string> = {
   'Breaks': '#7e22ce', 'Industrial': '#6b21a8', 'Electro': '#1e40af',
 };
 
-function safePhoto(url: string | null | undefined, fallback: string): string {
-  if (!url) return fallback;
-  // Only trust Supabase storage URLs — anything else (Unsplash, random CDNs) gets a local fallback
-  if (url.includes('supabase') || url.startsWith('/')) return url;
-  return fallback;
-}
-
 export default function PromoterCard({ promoter }: { promoter: any }) {
   const name = promoter.profile?.display_name ?? 'Unknown Promoter';
   const slug = promoter.profile?.slug ?? promoter.id;
-  const rawPhoto = promoter.profile?.profile_photo;
-  const photo = safePhoto(rawPhoto, getFallbackPhoto(promoter.id));
+  const photo = getFallbackPhoto(promoter.id);
   const genres: string[] = promoter.preferred_genres ?? [];
   const city = promoter.city ?? '';
 

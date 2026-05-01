@@ -15,16 +15,10 @@ function getFallbackPhoto(id: string): string {
   return VENUE_PHOTOS[hash % VENUE_PHOTOS.length];
 }
 
-function safePhoto(url: string | null | undefined, fallback: string): string {
-  if (!url) return fallback;
-  if (url.includes('supabase') || url.startsWith('/')) return url;
-  return fallback;
-}
-
 export default function VenueCard({ venue }: { venue: any }) {
   const name = venue.profile?.display_name ?? venue.name ?? 'Unknown Venue';
   const slug = venue.profile?.slug ?? venue.id;
-  const photo = safePhoto(venue.profile?.profile_photo, getFallbackPhoto(venue.id));
+  const photo = getFallbackPhoto(venue.id);
   const city = venue.city ?? '';
   const capacity = venue.capacity;
 

@@ -27,16 +27,10 @@ const GENRE_COLORS: Record<string, string> = {
   'Breaks': '#7e22ce', 'Industrial': '#6b21a8', 'Electro': '#1e40af',
 };
 
-function safePhoto(url: string | null | undefined, fallback: string): string {
-  if (!url) return fallback;
-  if (url.includes('supabase') || url.startsWith('/')) return url;
-  return fallback;
-}
-
 export default function ArtistCard({ artist }: { artist: any }) {
   const name = artist.profile?.display_name ?? 'Unknown Artist';
   const slug = artist.profile?.slug ?? artist.id;
-  const photo = safePhoto(artist.profile?.profile_photo, getFallbackPhoto(artist.id));
+  const photo = getFallbackPhoto(artist.id);
   const genres: string[] = artist.genres ?? [];
   const city = artist.city ?? '';
   const country = artist.country ?? '';

@@ -30,7 +30,7 @@ export default function EventCard({ event, venueName }: { event: any; venueName?
   const sColor = statusColor(event.status);
   const genres: string[] = event.genres ?? [];
   const slots: any[] = event.slots ?? [];
-  const poster = event.poster_image_url ?? event.posterImageUrl;
+  const poster = getFallbackPhoto(event.id);
 
   return (
     <Link href={`/events/${event.slug}`} className="brutal-card block group">
@@ -38,7 +38,7 @@ export default function EventCard({ event, venueName }: { event: any; venueName?
         <div className="aspect-video relative overflow-hidden bg-[#111]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={poster ?? getFallbackPhoto(event.id)}
+            src={poster}
             alt={event.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
             onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a3.jpg'; }}
