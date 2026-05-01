@@ -3,16 +3,16 @@ import Image from 'next/image';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
-// Curated rave/DJ/techno Unsplash photos for fallback
+// Curated dark underground music Unsplash photos
 const ARTIST_PHOTOS = [
   'photo-1493225457124-a3eb161ffa5f', // DJ performing
-  'photo-1540575467063-178a50c2df87', // rave crowd lights
-  'photo-1516450360452-9312f5e86fc7', // concert strobe
-  'photo-1571266028243-e4733b0f0bb0', // festival night
+  'photo-1492684223066-81342ee5ff30', // rave crowd dark
+  'photo-1516450360452-9312f5e86fc7', // concert strobe blue
+  'photo-1574068468686-94e0c68a3e35', // red lit crowd
+  'photo-1470229722913-7c0e2dbbafd3', // concert stage
   'photo-1598300042247-d088f8ab3a91', // dark nightclub
-  'photo-1614680376573-df3480f0c6a0', // DJ headphones
-  'photo-1571019613454-1cb2f99b2d8b', // vinyl records
   'photo-1459749411175-04bf5292ceea', // concert lights
+  'photo-1524368535928-5b5e00ddc76b', // crowd hands up
 ];
 
 function getFallbackPhoto(id: string): string {

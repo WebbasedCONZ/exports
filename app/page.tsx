@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { ArrowRight, Zap, Music2, Users, MapPin, FileText, Star, AlertTriangle } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Music2, Users, MapPin, FileText, Star, AlertTriangle } from 'lucide-react';
 
 const genres = ['140','UKG','Jungle','Industrial','Techno','House','Drum & Bass','Grime','Garage','Afrobeats','Breaks','Electro','140','UKG','Jungle','Industrial','Techno','House','Drum & Bass','Grime','Garage','Afrobeats','Breaks','Electro'];
 
@@ -13,38 +14,60 @@ const features = [
   { icon: <AlertTriangle size={16} />, label: 'Emergency Standby', desc: 'DJ cancelled? Blast available artists instantly with a premium offer.' },
 ];
 
+// Dark underground rave/DNB/bass music Unsplash photos — swap with your own
+const SCENE_PHOTOS = [
+  { id: 'photo-1492684223066-81342ee5ff30', label: 'crowd' },
+  { id: 'photo-1574068468686-94e0c68a3e35', label: 'lights' },
+  { id: 'photo-1516450360452-9312f5e86fc7', label: 'strobe' },
+  { id: 'photo-1470229722913-7c0e2dbbafd3', label: 'venue' },
+  { id: 'photo-1540575467063-178a50c2df87', label: 'festival' },
+  { id: 'photo-1598300042247-d088f8ab3a91', label: 'club' },
+];
+
 export default function HomePage() {
   return (
     <div className="relative overflow-hidden bg-black">
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex flex-col justify-center px-6 pt-20 pb-0 overflow-hidden bg-black">
+      <section className="relative min-h-screen flex flex-col justify-end px-6 pt-20 pb-16 overflow-hidden">
 
-        {/* Decorative blue splat top right */}
-        <div className="absolute top-24 right-8 w-28 h-28 splat bg-[#3d52ff] opacity-80 pointer-events-none" />
-        <div className="absolute top-40 right-20 w-14 h-14 splat bg-[#3d52ff] opacity-40 pointer-events-none" />
+        {/* FULL BLEED BACKGROUND PHOTO */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=85"
+            alt="Underground rave crowd"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          {/* Heavy dark overlay so text pops */}
+          <div className="absolute inset-0 bg-black/70" />
+          {/* Blue tint at bottom */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #000000 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.2) 100%)' }} />
+        </div>
+
+        {/* Decorative blue splat */}
+        <div className="absolute top-24 right-8 w-28 h-28 splat bg-[#3d52ff] opacity-60 pointer-events-none z-10" />
 
         {/* Horizontal rule lines */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[15,30,45,60,75].map(p => (
-            <div key={p} className="absolute left-0 right-0 h-px bg-white/[0.03]" style={{ top: `${p}%` }} />
+        <div className="absolute inset-0 pointer-events-none z-10">
+          {[20,40,60,80].map(p => (
+            <div key={p} className="absolute left-0 right-0 h-px bg-white/[0.04]" style={{ top: `${p}%` }} />
           ))}
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="relative z-20 max-w-7xl mx-auto w-full">
 
           {/* Top label row */}
-          <div className="flex flex-wrap items-center gap-3 mb-10">
+          <div className="flex flex-wrap items-center gap-3 mb-8">
             <span className="pill">Aotearoa NZ</span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/20">Underground Booking Platform</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40">Underground Booking Platform</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#3d52ff] animate-pulse ml-1" />
           </div>
 
           {/* MAIN HEADLINE */}
-          <div className="mb-8 relative">
-            {/* Splat behind text */}
-            <div className="absolute -left-6 top-4 w-20 h-20 splat bg-[#3d52ff]/20 pointer-events-none" />
-            <h1 className="text-[clamp(4rem,14vw,11rem)] font-black leading-[0.85] tracking-tighter uppercase relative z-10"
+          <div className="mb-8">
+            <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.85] tracking-tighter uppercase"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               <span className="block text-white">BOOK</span>
               <span className="block" style={{ WebkitTextStroke: '3px #3d52ff', color: 'transparent' }}>SMARTER.</span>
@@ -54,9 +77,9 @@ export default function HomePage() {
           </div>
 
           {/* Subtext + CTAs */}
-          <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-16">
-            <p className="text-white/40 text-sm sm:text-base max-w-lg leading-relaxed lg:flex-1">
-              EXPORTS connects DJs, promoters, and venues through a professional booking platform built for the realities of the underground scene — smart matching, digital contracts, emergency standby.
+          <div className="flex flex-col lg:flex-row lg:items-end gap-8">
+            <p className="text-white/50 text-sm sm:text-base max-w-md leading-relaxed lg:flex-1">
+              EXPORTS connects DJs, promoters, and venues through a professional booking platform built for the realities of the underground scene.
             </p>
             <div className="flex flex-wrap gap-3 lg:flex-shrink-0">
               <Link href="/events"
@@ -64,18 +87,18 @@ export default function HomePage() {
                 Browse Gigs <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link href="/auth/login"
-                className="flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-sm hover:border-[#3d52ff] hover:text-[#3d52ff] transition-colors">
+                className="flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-bold text-sm uppercase tracking-widest rounded-sm hover:border-[#3d52ff] hover:text-[#3d52ff] transition-colors backdrop-blur-sm">
                 Join Free
               </Link>
             </div>
           </div>
 
           {/* Stats */}
-          <div className="flex items-center gap-8 border-t border-white/5 pt-6">
+          <div className="flex items-center gap-8 border-t border-white/10 pt-6 mt-8">
             {[['05','Artists'],['02','Promoters'],['02','Venues'],['04+','Live Gigs']].map(([n,l]) => (
               <div key={l}>
                 <p className="text-xl font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{n}</p>
-                <p className="text-[10px] text-white/25 uppercase tracking-widest">{l}</p>
+                <p className="text-[10px] text-white/30 uppercase tracking-widest">{l}</p>
               </div>
             ))}
           </div>
@@ -92,6 +115,33 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+
+      {/* ── PHOTO COLLAGE STRIP ── */}
+      <section className="py-16 overflow-hidden border-b border-white/5">
+        <div className="flex gap-2 px-6 max-w-7xl mx-auto mb-6 items-end justify-between">
+          <h2 className="text-xs font-black uppercase tracking-[0.25em] text-white/20">The Scene</h2>
+          <div className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-[#3d52ff] animate-pulse" />
+            <span className="text-[10px] uppercase tracking-widest text-white/15">Aotearoa Underground</span>
+          </div>
+        </div>
+
+        <div className="flex gap-2 overflow-hidden px-6 max-w-7xl mx-auto">
+          {SCENE_PHOTOS.map((p, i) => (
+            <div key={p.id}
+              className={`relative flex-shrink-0 rounded-sm overflow-hidden border border-white/5 group
+                ${i === 0 ? 'w-[28%] aspect-[3/4]' : i === 1 ? 'w-[18%] aspect-[3/4]' : 'flex-1 aspect-[3/4]'}`}>
+              <Image
+                src={`https://images.unsplash.com/${p.id}?auto=format&fit=crop&w=400&q=80`}
+                alt={`Underground music scene ${p.label}`}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* ── BROWSE CARDS ── */}
       <section className="px-6 py-20 max-w-7xl mx-auto">
@@ -111,10 +161,9 @@ export default function HomePage() {
             { href: '/artists', label: 'Artists', count: '05', desc: 'DJs & selectors ready to play' },
             { href: '/promoters', label: 'Promoters', count: '02', desc: 'Active collectives & brands' },
             { href: '/venues', label: 'Venues', count: '02', desc: 'Clubs with full tech specs listed' },
-          ].map((c, i) => (
+          ].map((c) => (
             <Link key={c.href} href={c.href} className="brutal-card group block">
               <div className="bg-[#0a0a0a] border border-white/8 rounded-sm p-7 h-full relative overflow-hidden min-h-[200px]">
-                {/* Giant number watermark */}
                 <p className="text-[8rem] font-black leading-none text-white/[0.03] absolute -bottom-4 -right-2 select-none"
                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{c.count}</p>
                 <div className="relative z-10 h-full flex flex-col">
@@ -150,10 +199,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f, i) => (
               <div key={i}
-                className={`p-6 border-white/5 hover:bg-white/[0.02] transition-colors group
-                  ${i % 3 !== 2 ? 'lg:border-r' : ''}
-                  ${i < 3 ? 'border-b' : ''}
-                  border-white/5`}>
+                className={`p-6 hover:bg-white/[0.02] transition-colors group
+                  ${i % 3 !== 2 ? 'lg:border-r border-white/5' : ''}
+                  ${i < 3 ? 'border-b border-white/5' : ''}`}>
                 <div className="w-8 h-8 rounded-sm bg-[#3d52ff]/10 border border-[#3d52ff]/20 flex items-center justify-center text-[#3d52ff] mb-4 group-hover:bg-[#3d52ff] group-hover:text-white transition-colors">
                   {f.icon}
                 </div>
@@ -188,18 +236,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FULL WIDTH PHOTO BANNER ── */}
+      <section className="relative h-[50vh] min-h-[300px] overflow-hidden border-y border-white/5">
+        <Image
+          src="https://images.unsplash.com/photo-1574068468686-94e0c68a3e35?auto=format&fit=crop&w=1600&q=85"
+          alt="Underground venue"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center px-6">
+            <p className="text-[clamp(2rem,6vw,5rem)] font-black uppercase tracking-tighter text-white leading-[0.9]"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              No Half<br />
+              <span className="text-[#3d52ff]">Measures.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── BIG CTA ── */}
-      <section className="px-6 pb-24 max-w-7xl mx-auto">
+      <section className="px-6 py-24 max-w-7xl mx-auto">
         <div className="bg-white rounded-sm p-10 sm:p-16 relative overflow-hidden">
-          {/* Blue splats decorative */}
           <div className="absolute top-6 right-6 w-20 h-20 splat bg-[#3d52ff]" />
           <div className="absolute bottom-6 right-20 w-12 h-12 splat bg-[#3d52ff]/40" />
           <div className="absolute top-1/2 right-8 w-8 h-8 splat bg-[#3d52ff]/20" />
-
-          {/* Giant watermark */}
           <div className="absolute -right-4 -bottom-6 text-[10rem] font-black text-black/5 leading-none uppercase select-none"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}>NZ</div>
-
           <div className="relative z-10">
             <span className="pill mb-6 inline-flex">Built for the underground</span>
             <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-black mb-6 leading-[0.85]"

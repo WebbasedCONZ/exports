@@ -4,11 +4,11 @@ import { MapPin, Users, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
 const VENUE_PHOTOS = [
-  'photo-1598300042247-d088f8ab3a91', // dark nightclub interior
-  'photo-1571266028243-e4733b0f0bb0', // venue exterior night
+  'photo-1598300042247-d088f8ab3a91', // dark club interior
+  'photo-1574068468686-94e0c68a3e35', // warehouse crowd
+  'photo-1492684223066-81342ee5ff30', // raw concrete venue
   'photo-1516450360452-9312f5e86fc7', // concert hall
-  'photo-1540575467063-178a50c2df87', // large venue
-  'photo-1481883836041-bba898e2b9e5', // club interior
+  'photo-1470229722913-7c0e2dbbafd3', // stage wide
 ];
 
 function getFallbackPhoto(id: string): string {
