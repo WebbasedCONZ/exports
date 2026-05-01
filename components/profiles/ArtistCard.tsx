@@ -27,10 +27,16 @@ const GENRE_COLORS: Record<string, string> = {
   'Breaks': '#7e22ce', 'Industrial': '#6b21a8', 'Electro': '#1e40af',
 };
 
+function safePhoto(url: string | null | undefined, fallback: string): string {
+  if (!url) return fallback;
+  if (url.includes('supabase') || url.startsWith('/')) return url;
+  return fallback;
+}
+
 export default function ArtistCard({ artist }: { artist: any }) {
   const name = artist.profile?.display_name ?? 'Unknown Artist';
   const slug = artist.profile?.slug ?? artist.id;
-  const photo = artist.profile?.profile_photo;
+  const photo = safePhoto(artist.profile?.profile_photo, getFallbackPhoto(artist.id));
   const genres: string[] = artist.genres ?? [];
   const city = artist.city ?? '';
   const country = artist.country ?? '';
@@ -42,7 +48,7 @@ export default function ArtistCard({ artist }: { artist: any }) {
         <div className="aspect-[4/3] relative overflow-hidden bg-[#111]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={photo ?? getFallbackPhoto(artist.id)}
+            src={photo}
             alt={name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
             onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a1.jpg'; }}

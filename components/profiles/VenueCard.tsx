@@ -15,10 +15,16 @@ function getFallbackPhoto(id: string): string {
   return VENUE_PHOTOS[hash % VENUE_PHOTOS.length];
 }
 
+function safePhoto(url: string | null | undefined, fallback: string): string {
+  if (!url) return fallback;
+  if (url.includes('supabase') || url.startsWith('/')) return url;
+  return fallback;
+}
+
 export default function VenueCard({ venue }: { venue: any }) {
   const name = venue.profile?.display_name ?? venue.name ?? 'Unknown Venue';
   const slug = venue.profile?.slug ?? venue.id;
-  const photo = venue.profile?.profile_photo;
+  const photo = safePhoto(venue.profile?.profile_photo, getFallbackPhoto(venue.id));
   const city = venue.city ?? '';
   const capacity = venue.capacity;
 
@@ -29,7 +35,7 @@ export default function VenueCard({ venue }: { venue: any }) {
         <div className="aspect-video relative overflow-hidden bg-[#111]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={photo ?? getFallbackPhoto(venue.id)}
+            src={photo}
             alt={name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
             onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a4.jpg'; }}

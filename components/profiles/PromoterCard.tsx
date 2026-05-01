@@ -22,10 +22,18 @@ const GENRE_COLORS: Record<string, string> = {
   'Breaks': '#7e22ce', 'Industrial': '#6b21a8', 'Electro': '#1e40af',
 };
 
+function safePhoto(url: string | null | undefined, fallback: string): string {
+  if (!url) return fallback;
+  // Only trust Supabase storage URLs — anything else (Unsplash, random CDNs) gets a local fallback
+  if (url.includes('supabase') || url.startsWith('/')) return url;
+  return fallback;
+}
+
 export default function PromoterCard({ promoter }: { promoter: any }) {
   const name = promoter.profile?.display_name ?? 'Unknown Promoter';
   const slug = promoter.profile?.slug ?? promoter.id;
-  const photo = promoter.profile?.profile_photo;
+  const rawPhoto = promoter.profile?.profile_photo;
+  const photo = safePhoto(rawPhoto, getFallbackPhoto(promoter.id));
   const genres: string[] = promoter.preferred_genres ?? [];
   const city = promoter.city ?? '';
 
@@ -36,7 +44,7 @@ export default function PromoterCard({ promoter }: { promoter: any }) {
         <div className="aspect-video relative overflow-hidden bg-[#111]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={photo ?? getFallbackPhoto(promoter.id)}
+            src={photo}
             alt={name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0"
             onError={(e) => { (e.target as HTMLImageElement).src = '/images/artists/a2.jpg'; }}
