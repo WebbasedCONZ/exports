@@ -6,11 +6,12 @@ import { getCollection, upsert, KEYS } from '@/lib/storage';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { formatDate, formatCurrency, statusColor } from '@/lib/utils';
 import { contractStatusLabel } from '@/lib/contracts';
-import { CheckCircle2, Circle, Download, FileText, DollarSign, Clock } from 'lucide-react';
+import { CheckCircle2, Circle, Download, FileText, DollarSign, Clock, Star } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
 import type { Contract, PaymentInstalment } from '@/types';
 import dynamic from 'next/dynamic';
+import { useVouchBadges, VOUCH_BADGES } from '@/hooks/useSocialProof';
 
 const GigSheetPDF = dynamic(() => import('@/components/settlement/GigSheetPDF'), { ssr: false });
 
@@ -32,7 +33,18 @@ export default function SettlementPage() {
   if (!c) return <div className="max-w-7xl mx-auto px-6 py-20 text-center text-[#444]"><p>No contract found for this event.</p></div>;
 
   const isArtist = user?.role === 'artist' || user?.profileId === c.artistId;
+  const isPromoter = !isArtist;
   const alreadySigned = isArtist ? !!c.artistSignedAt : !!c.promoterSignedAt;
+  const isCompleted = c.status === 'SignedByBoth';
+
+  // Vouch panel — only for promoters on fully signed contracts
+  const { grouped: vouchedBadges, addVouch } = useVouchBadges(c.artistId);
+  const [vouchSubmitted, setVouchSubmitted] = useState(false);
+
+  async function handleVouch(badge: string) {
+    await addVouch(c.promoterId, badge, c.eventId);
+    setVouchSubmitted(true);
+  }
   const sColor = statusColor(c.status);
 
   const sign = () => {
@@ -206,7 +218,7 @@ export default function SettlementPage() {
           </section>
         </div>
 
-        {/* Payment sidebar */}
+        {/* Sidebar */}
         <div className="space-y-6">
           <section className="bg-[#141414] border border-[#252525] rounded-md overflow-hidden">
             <div className="px-4 py-3 border-b border-[#252525]">
@@ -268,6 +280,62 @@ export default function SettlementPage() {
               </div>
             </div>
           </section>
+          {/* Vouch Panel — promoters only, contract fully signed */}
+          {isPromoter && isCompleted && (
+            <section className="bg-[#141414] border border-[#252525] rounded-md overflow-hidden">
+              <div className="px-4 py-3 border-b border-[#252525] flex items-center gap-2">
+                <Star size={13} className="text-[#ffd700]" fill="#ffd700" />
+                <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555]">Vouch for Artist</h2>
+              </div>
+              <div className="p-4">
+                {/* Existing vouches */}
+                {Object.keys(vouchedBadges).length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {Object.entries(vouchedBadges).map(([badge, vouches]) => (
+                      <div key={badge} className="flex items-center gap-1 px-2 py-1 bg-[#ffd700]/5 border border-[#ffd700]/20 rounded-sm">
+                        <Star size={9} className="text-[#ffd700]" fill="#ffd700" />
+                        <span className="text-[10px] text-[#ffd700]">{badge}</span>
+                        {(vouches as any[]).length > 1 && (
+                          <span className="text-[9px] text-[#888]">×{(vouches as any[]).length}</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {vouchSubmitted ? (
+                  <div className="flex items-center gap-2 text-sm text-[#ffd700]">
+                    <Star size={14} fill="currentColor" /> Vouch recorded — thanks!
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-[10px] text-[#555] mb-3 leading-relaxed">
+                      Leave a badge for {c.gigSheet.artistName}. Vouches are public and help them get more gigs.
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {VOUCH_BADGES.map(badge => {
+                        const alreadyGiven = Object.keys(vouchedBadges).includes(badge);
+                        return (
+                          <button
+                            key={badge}
+                            onClick={() => !alreadyGiven && handleVouch(badge)}
+                            disabled={alreadyGiven}
+                            className={`px-2.5 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest border transition-all ${
+                              alreadyGiven
+                                ? 'border-[#ffd700]/30 text-[#ffd700] bg-[#ffd700]/5 cursor-default'
+                                : 'border-white/10 text-white/40 hover:border-[#ffd700] hover:text-[#ffd700] hover:bg-[#ffd700]/5'
+                            }`}
+                          >
+                            {alreadyGiven ? '✓ ' : '+ '}{badge}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>

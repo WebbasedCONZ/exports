@@ -38,11 +38,11 @@ export default function HomePage() {
 
           <h1 className="font-black leading-[0.86] tracking-tighter uppercase mb-10"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(3.5rem,10vw,9rem)' }}>
-            <span className="block whitespace-nowrap">
+            <span className="block">
               <span className="text-white">BOOK </span>
               <span style={{ WebkitTextStroke: '3px #3d52ff', color: 'transparent' }}>SMARTER.</span>
             </span>
-            <span className="block whitespace-nowrap">
+            <span className="block">
               <span className="text-white">PLAY </span>
               <span className="text-[#3d52ff]">BETTER.</span>
             </span>
@@ -107,8 +107,8 @@ export default function HomePage() {
                 <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#3d52ff] mb-5 flex items-center gap-2">
                   <span className="w-5 h-px bg-[#3d52ff]" /> The Platform
                 </p>
-                <h2 className="font-black uppercase tracking-tight text-black leading-[0.88] mb-6 whitespace-nowrap"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(1.4rem,3.2vw,3.5rem)' }}>
+                <h2 className="font-black uppercase tracking-tight text-black leading-[0.88] mb-6"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(2rem,4.5vw,3.5rem)' }}>
                   Everything in one <span className="text-[#3d52ff]">place.</span>
                 </h2>
                 <p className="text-black/45 text-sm leading-relaxed max-w-xs">
