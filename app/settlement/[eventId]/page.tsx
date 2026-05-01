@@ -28,8 +28,13 @@ export default function SettlementPage() {
   const [signingMode, setSigningMode] = useState(false);
   const [sigName, setSigName] = useState('');
   const [showPDF, setShowPDF] = useState(false);
+  const [vouchSubmitted, setVouchSubmitted] = useState(false);
 
   const c = liveContract ?? contract;
+
+  // Hooks must be called unconditionally — use empty string if no contract yet
+  const { grouped: vouchedBadges, addVouch } = useVouchBadges(c?.artistId ?? '');
+
   if (!c) return <div className="max-w-7xl mx-auto px-6 py-20 text-center text-[#444]"><p>No contract found for this event.</p></div>;
 
   const isArtist = user?.role === 'artist' || user?.profileId === c.artistId;
@@ -37,12 +42,8 @@ export default function SettlementPage() {
   const alreadySigned = isArtist ? !!c.artistSignedAt : !!c.promoterSignedAt;
   const isCompleted = c.status === 'SignedByBoth';
 
-  // Vouch panel — only for promoters on fully signed contracts
-  const { grouped: vouchedBadges, addVouch } = useVouchBadges(c.artistId);
-  const [vouchSubmitted, setVouchSubmitted] = useState(false);
-
   async function handleVouch(badge: string) {
-    await addVouch(c.promoterId, badge, c.eventId);
+    await addVouch(c!.promoterId, badge, c!.eventId);
     setVouchSubmitted(true);
   }
   const sColor = statusColor(c.status);
