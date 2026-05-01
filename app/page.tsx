@@ -107,9 +107,9 @@ export default function HomePage() {
                 <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#3d52ff] mb-5 flex items-center gap-2">
                   <span className="w-5 h-px bg-[#3d52ff]" /> The Platform
                 </p>
-                <h2 className="font-black uppercase tracking-tight text-black leading-[0.88] mb-6"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(2rem,4vw,3.5rem)' }}>
-                  Everything<br />in one<br /><span className="text-[#3d52ff]">place.</span>
+                <h2 className="font-black uppercase tracking-tight text-black leading-[0.88] mb-6 whitespace-nowrap"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(1.4rem,3.2vw,3.5rem)' }}>
+                  Everything in one <span className="text-[#3d52ff]">place.</span>
                 </h2>
                 <p className="text-black/45 text-sm leading-relaxed max-w-xs">
                   Full booking workflow from first message to signed contract to payment — built for the underground.
