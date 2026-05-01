@@ -33,8 +33,15 @@ export default function PromotersPage() {
 
   return (
     <div className="min-h-screen bg-black">
+      {/* Header photo strip */}
+      <div className="relative h-40 overflow-hidden border-b border-white/5">
+        <img src="/images/dj.jpg" alt="" className="w-full h-full object-cover object-[50%_40%]"
+          onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1574068468686-94e0c68a3e35?auto=format&fit=crop&w=1400&q=80'; }} />
+        <div className="absolute inset-0 bg-black/70" />
+      </div>
+
       {/* Hero header */}
-      <div className="border-b border-white/5 px-6 pt-24 pb-10 max-w-7xl mx-auto">
+      <div className="border-b border-white/5 px-6 pt-10 pb-10 max-w-7xl mx-auto">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="pill mb-4 inline-flex">Collectives & Brands</span>

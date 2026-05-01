@@ -18,8 +18,15 @@ export default function VenuesPage() {
 
   return (
     <div className="min-h-screen bg-black">
+      {/* Header photo strip */}
+      <div className="relative h-40 overflow-hidden border-b border-white/5">
+        <img src="/images/hero.jpg" alt="" className="w-full h-full object-cover object-[50%_70%]"
+          onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1400&q=80'; }} />
+        <div className="absolute inset-0 bg-black/70" />
+      </div>
+
       {/* Hero header */}
-      <div className="border-b border-white/5 px-6 pt-24 pb-10 max-w-7xl mx-auto">
+      <div className="border-b border-white/5 px-6 pt-10 pb-10 max-w-7xl mx-auto">
         <span className="pill mb-4 inline-flex">Clubs & Spaces</span>
         <h1 className="text-[clamp(3rem,8vw,6rem)] font-black uppercase leading-[0.85] tracking-tighter text-white"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}>

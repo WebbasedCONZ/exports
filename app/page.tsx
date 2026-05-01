@@ -14,42 +14,64 @@ const features = [
   { icon: <AlertTriangle size={16} />, label: 'Emergency Standby', desc: 'DJ cancelled? Blast available artists instantly with a premium offer.' },
 ];
 
-// Dark underground rave/DNB/bass music Unsplash photos — swap with your own
-const SCENE_PHOTOS = [
-  { id: 'photo-1492684223066-81342ee5ff30', label: 'crowd' },
-  { id: 'photo-1574068468686-94e0c68a3e35', label: 'lights' },
-  { id: 'photo-1516450360452-9312f5e86fc7', label: 'strobe' },
-  { id: 'photo-1470229722913-7c0e2dbbafd3', label: 'venue' },
-  { id: 'photo-1540575467063-178a50c2df87', label: 'festival' },
-  { id: 'photo-1598300042247-d088f8ab3a91', label: 'club' },
+// ─────────────────────────────────────────────
+// DROP YOUR PHOTOS HERE:
+//   public/images/hero.jpg       → wide crowd shot (Basement DNB top-down)
+//   public/images/dj.jpg         → DJ + crowd close-up (Pioneer decks shot)
+//   public/images/scene-1.jpg    → extra scene shots
+//   public/images/scene-2.jpg
+//   public/images/scene-3.jpg
+// Fallback = Unsplash while files don't exist yet
+// ─────────────────────────────────────────────
+const HERO_IMG = '/images/hero.jpg';
+const DJ_IMG   = '/images/dj.jpg';
+const SCENE_IMGS = [
+  '/images/scene-1.jpg',
+  '/images/scene-2.jpg',
+  '/images/scene-3.jpg',
+];
+
+// Unsplash fallbacks (used when local files not present)
+const HERO_FALLBACK   = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=85';
+const DJ_FALLBACK     = 'https://images.unsplash.com/photo-1574068468686-94e0c68a3e35?auto=format&fit=crop&w=1200&q=85';
+const SCENE_FALLBACKS = [
+  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=600&q=80',
 ];
 
 export default function HomePage() {
   return (
     <div className="relative overflow-hidden bg-black">
 
-      {/* ── HERO ── */}
+      {/* ══════════════════════════════════════
+          HERO — full bleed photo
+      ══════════════════════════════════════ */}
       <section className="relative min-h-screen flex flex-col justify-end px-6 pt-20 pb-16 overflow-hidden">
 
-        {/* FULL BLEED BACKGROUND PHOTO */}
+        {/* Background photo */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=85"
+            src={HERO_IMG}
             alt="Underground rave crowd"
             fill
             priority
             className="object-cover object-center"
+            onError={(e) => { (e.target as HTMLImageElement).src = HERO_FALLBACK; }}
           />
-          {/* Heavy dark overlay so text pops */}
-          <div className="absolute inset-0 bg-black/70" />
-          {/* Blue tint at bottom */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #000000 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.2) 100%)' }} />
+          {/* Dark gradient — heavier at top for nav, bleeds to near-black at bottom for text */}
+          <div className="absolute inset-0"
+            style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.95) 100%)' }} />
+          {/* Blue tint wash */}
+          <div className="absolute inset-0 mix-blend-multiply"
+            style={{ background: 'radial-gradient(ellipse at 70% 50%, rgba(61,82,255,0.25) 0%, transparent 70%)' }} />
         </div>
 
-        {/* Decorative blue splat */}
-        <div className="absolute top-24 right-8 w-28 h-28 splat bg-[#3d52ff] opacity-60 pointer-events-none z-10" />
+        {/* Decorative geometry */}
+        <div className="absolute top-24 right-8 w-24 h-24 splat bg-[#3d52ff] opacity-70 pointer-events-none z-10" />
+        <div className="absolute top-40 right-20 w-10 h-10 splat bg-[#3d52ff] opacity-35 pointer-events-none z-10" />
 
-        {/* Horizontal rule lines */}
+        {/* Rule lines */}
         <div className="absolute inset-0 pointer-events-none z-10">
           {[20,40,60,80].map(p => (
             <div key={p} className="absolute left-0 right-0 h-px bg-white/[0.04]" style={{ top: `${p}%` }} />
@@ -58,28 +80,23 @@ export default function HomePage() {
 
         <div className="relative z-20 max-w-7xl mx-auto w-full">
 
-          {/* Top label row */}
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <span className="pill">Aotearoa NZ</span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40">Underground Booking Platform</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">Underground Booking Platform</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#3d52ff] animate-pulse ml-1" />
           </div>
 
-          {/* MAIN HEADLINE */}
-          <div className="mb-8">
-            <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.85] tracking-tighter uppercase"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              <span className="block text-white">BOOK</span>
-              <span className="block" style={{ WebkitTextStroke: '3px #3d52ff', color: 'transparent' }}>SMARTER.</span>
-              <span className="block text-white">PLAY</span>
-              <span className="block text-[#3d52ff]">BETTER.</span>
-            </h1>
-          </div>
+          <h1 className="text-[clamp(4rem,13vw,10rem)] font-black leading-[0.82] tracking-tighter uppercase mb-8"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <span className="block text-white">BOOK</span>
+            <span className="block" style={{ WebkitTextStroke: '3px #3d52ff', color: 'transparent' }}>SMARTER.</span>
+            <span className="block text-white">PLAY</span>
+            <span className="block text-[#3d52ff]">BETTER.</span>
+          </h1>
 
-          {/* Subtext + CTAs */}
-          <div className="flex flex-col lg:flex-row lg:items-end gap-8">
-            <p className="text-white/50 text-sm sm:text-base max-w-md leading-relaxed lg:flex-1">
-              EXPORTS connects DJs, promoters, and venues through a professional booking platform built for the realities of the underground scene.
+          <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-12">
+            <p className="text-white/60 text-sm sm:text-base max-w-md leading-relaxed lg:flex-1">
+              EXPORTS connects DJs, promoters, and venues through a professional booking platform built for the realities of the underground scene — smart matching, digital contracts, emergency standby.
             </p>
             <div className="flex flex-wrap gap-3 lg:flex-shrink-0">
               <Link href="/events"
@@ -87,14 +104,13 @@ export default function HomePage() {
                 Browse Gigs <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link href="/auth/login"
-                className="flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-bold text-sm uppercase tracking-widest rounded-sm hover:border-[#3d52ff] hover:text-[#3d52ff] transition-colors backdrop-blur-sm">
+                className="flex items-center gap-2 px-8 py-4 border border-white/40 text-white font-bold text-sm uppercase tracking-widest rounded-sm hover:border-[#3d52ff] hover:text-[#3d52ff] transition-colors backdrop-blur-sm bg-black/20">
                 Join Free
               </Link>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="flex items-center gap-8 border-t border-white/10 pt-6 mt-8">
+          <div className="flex items-center gap-8 border-t border-white/10 pt-6">
             {[['05','Artists'],['02','Promoters'],['02','Venues'],['04+','Live Gigs']].map(([n,l]) => (
               <div key={l}>
                 <p className="text-xl font-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{n}</p>
@@ -116,28 +132,88 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── PHOTO COLLAGE STRIP ── */}
-      <section className="py-16 overflow-hidden border-b border-white/5">
-        <div className="flex gap-2 px-6 max-w-7xl mx-auto mb-6 items-end justify-between">
-          <h2 className="text-xs font-black uppercase tracking-[0.25em] text-white/20">The Scene</h2>
-          <div className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-[#3d52ff] animate-pulse" />
-            <span className="text-[10px] uppercase tracking-widest text-white/15">Aotearoa Underground</span>
+      {/* ══════════════════════════════════════
+          SPLIT PHOTO + TEXT — DJ shot
+      ══════════════════════════════════════ */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-stretch min-h-[60vh]">
+
+          {/* Photo */}
+          <div className="relative overflow-hidden rounded-sm min-h-[400px] group">
+            <Image
+              src={DJ_IMG}
+              alt="DJ at Pioneer decks with crowd"
+              fill
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              onError={(e) => { (e.target as HTMLImageElement).src = DJ_FALLBACK; }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            {/* Overlay badge */}
+            <div className="absolute bottom-6 left-6">
+              <span className="pill">Pioneer CDJ-3000</span>
+            </div>
+          </div>
+
+          {/* Text side */}
+          <div className="bg-[#0a0a0a] border border-white/8 rounded-sm p-8 lg:p-12 flex flex-col justify-between">
+            <div>
+              <span className="pill mb-6 inline-flex">The Platform</span>
+              <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-white leading-[0.85] mb-6"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Everything<br />
+                <span className="text-[#3d52ff]">in one</span><br />
+                place.
+              </h2>
+              <p className="text-white/40 text-sm leading-relaxed mb-8 max-w-sm">
+                From first message to signed contract to payment tracking — the full booking workflow, built for underground promoters and DJs who are serious about the scene.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                'Artist profiles with SoundCloud embeds',
+                'Smart gig matching — top 5 shortlist',
+                'Click-to-agree digital contracts',
+                'Emergency DJ standby with 20% uplift',
+                'Payment instalment tracking',
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#3d52ff] flex-shrink-0" />
+                  <p className="text-xs text-white/50">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 pt-8 border-t border-white/5 flex gap-3">
+              <Link href="/artists"
+                className="group flex items-center gap-2 text-sm font-black uppercase tracking-widest text-white/40 hover:text-[#3d52ff] transition-colors">
+                Browse Artists <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <span className="text-white/10">·</span>
+              <Link href="/events"
+                className="group flex items-center gap-2 text-sm font-black uppercase tracking-widest text-white/40 hover:text-[#3d52ff] transition-colors">
+                Open Gigs <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="flex gap-2 overflow-hidden px-6 max-w-7xl mx-auto">
-          {SCENE_PHOTOS.map((p, i) => (
-            <div key={p.id}
-              className={`relative flex-shrink-0 rounded-sm overflow-hidden border border-white/5 group
-                ${i === 0 ? 'w-[28%] aspect-[3/4]' : i === 1 ? 'w-[18%] aspect-[3/4]' : 'flex-1 aspect-[3/4]'}`}>
+      {/* ══════════════════════════════════════
+          3-UP SCENE PHOTO STRIP
+      ══════════════════════════════════════ */}
+      <section className="px-6 pb-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-3 gap-2">
+          {SCENE_IMGS.map((src, i) => (
+            <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-sm group">
               <Image
-                src={`https://images.unsplash.com/${p.id}?auto=format&fit=crop&w=400&q=80`}
-                alt={`Underground music scene ${p.label}`}
+                src={src}
+                alt={`Underground scene ${i + 1}`}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
+                onError={(e) => { (e.target as HTMLImageElement).src = SCENE_FALLBACKS[i]; }}
               />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
             </div>
           ))}
         </div>
@@ -151,9 +227,7 @@ export default function HomePage() {
             Explore<br />
             <span className="text-white/15">The Scene</span>
           </h2>
-          <Link href="/events" className="pill text-white hover:bg-[#5566ff] transition-colors">
-            All gigs →
-          </Link>
+          <Link href="/events" className="pill hover:bg-[#5566ff] transition-colors">All gigs →</Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -184,14 +258,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURES — newspaper grid ── */}
+      {/* ── FEATURES ── */}
       <section className="px-6 pb-20 max-w-7xl mx-auto">
         <div className="border border-white/8 rounded-sm overflow-hidden">
           <div className="bg-[#3d52ff] px-8 py-5 flex items-center justify-between">
             <h2 className="text-lg font-black uppercase tracking-widest text-white"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Platform Features
-            </h2>
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Platform Features</h2>
             <div className="flex gap-2">
               {[...Array(3)].map((_,i) => <div key={i} className="w-2 h-2 rounded-full bg-white/30" />)}
             </div>
@@ -213,8 +285,37 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══════════════════════════════════════
+          FULL-BLEED BANNER — "No Half Measures"
+      ══════════════════════════════════════ */}
+      <section className="relative h-[55vh] min-h-[320px] overflow-hidden border-y border-white/5">
+        <Image
+          src={HERO_IMG}
+          alt="Underground event"
+          fill
+          className="object-cover object-bottom"
+          onError={(e) => { (e.target as HTMLImageElement).src = HERO_FALLBACK; }}
+        />
+        {/* Angled colour wash */}
+        <div className="absolute inset-0"
+          style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(61,82,255,0.4) 50%, rgba(0,0,0,0.85) 100%)' }} />
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-4">Aotearoa Underground</p>
+          <h2 className="text-[clamp(3rem,9vw,8rem)] font-black uppercase tracking-tighter text-white leading-[0.82]"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            No Half<br />
+            <span className="text-[#3d52ff]">Measures.</span>
+          </h2>
+          <p className="text-white/30 text-sm mt-6 max-w-xs">
+            Professional tools. Real contracts. The whole scene, in one place.
+          </p>
+        </div>
+      </section>
+
       {/* ── EMERGENCY STANDBY ── */}
-      <section className="px-6 pb-20 max-w-7xl mx-auto">
+      <section className="px-6 py-20 max-w-7xl mx-auto">
         <div className="relative bg-[#ff3333]/5 border border-[#ff3333]/15 rounded-sm p-8 sm:p-12 overflow-hidden">
           <div className="absolute top-4 right-4 w-16 h-16 splat bg-[#ff3333]/20" />
           <div className="absolute bottom-4 right-12 w-10 h-10 splat bg-[#ff3333]/10" />
@@ -223,7 +324,7 @@ export default function HomePage() {
               <AlertTriangle size={20} className="text-white" />
             </div>
             <div className="flex-1">
-              <span className="pill bg-[#ff3333] mb-3 inline-flex">🚨 New</span>
+              <span className="pill bg-[#ff3333] mb-3 inline-flex">🚨 New Feature</span>
               <h3 className="text-2xl font-black uppercase tracking-tight text-white mb-1"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Emergency Standby</h3>
               <p className="text-sm text-white/30">DJ cancelled 4 hours before? Hit the panic button. Blast all available artists with a 20% premium offer. Slot filled in minutes.</p>
@@ -236,32 +337,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FULL WIDTH PHOTO BANNER ── */}
-      <section className="relative h-[50vh] min-h-[300px] overflow-hidden border-y border-white/5">
-        <Image
-          src="https://images.unsplash.com/photo-1574068468686-94e0c68a3e35?auto=format&fit=crop&w=1600&q=85"
-          alt="Underground venue"
-          fill
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-6">
-            <p className="text-[clamp(2rem,6vw,5rem)] font-black uppercase tracking-tighter text-white leading-[0.9]"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              No Half<br />
-              <span className="text-[#3d52ff]">Measures.</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── BIG CTA ── */}
-      <section className="px-6 py-24 max-w-7xl mx-auto">
+      {/* ── CTA ── */}
+      <section className="px-6 pb-24 max-w-7xl mx-auto">
         <div className="bg-white rounded-sm p-10 sm:p-16 relative overflow-hidden">
           <div className="absolute top-6 right-6 w-20 h-20 splat bg-[#3d52ff]" />
           <div className="absolute bottom-6 right-20 w-12 h-12 splat bg-[#3d52ff]/40" />
-          <div className="absolute top-1/2 right-8 w-8 h-8 splat bg-[#3d52ff]/20" />
           <div className="absolute -right-4 -bottom-6 text-[10rem] font-black text-black/5 leading-none uppercase select-none"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}>NZ</div>
           <div className="relative z-10">
