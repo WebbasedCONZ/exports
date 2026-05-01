@@ -3,9 +3,11 @@ import { useParams } from 'next/navigation';
 import { usePromoter } from '@/hooks/usePromoters';
 import { useEvents } from '@/hooks/useEvents';
 import { useVenues } from '@/hooks/useVenues';
+import { useAuth } from '@/hooks/useAuth';
 import TrustedBadge from '@/components/profiles/TrustedBadge';
 import GenreTagList from '@/components/profiles/GenreTagList';
 import EventCard from '@/components/events/EventCard';
+import MessageButton from '@/components/messaging/MessageButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Calendar, Share2, ExternalLink } from 'lucide-react';
@@ -15,6 +17,8 @@ export default function PromoterProfilePage() {
   const promoter = usePromoter(slug);
   const { events } = useEvents();
   const { venues } = useVenues();
+  const { profile } = useAuth();
+  const isOwnProfile = profile?.id === promoter?.profile_id;
 
   if (!promoter) return <div className="max-w-7xl mx-auto px-6 py-20 text-center text-[#444]"><p>Loading...</p></div>;
 
@@ -50,11 +54,14 @@ export default function PromoterProfilePage() {
                   <Share2 size={14} />
                 </a>
               )}
-              {promoter.socialLinks.ra && (
+              {promoter.socialLinks?.ra && (
                 <a href={promoter.socialLinks.ra} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-1.5 px-3 py-1.5 border border-[#252525] rounded-sm text-xs text-[#555] hover:text-[#ededed] transition-colors">
                   <ExternalLink size={12} /> RA
                 </a>
+              )}
+              {!isOwnProfile && promoter.profile_id && (
+                <MessageButton recipientProfileId={promoter.profile_id} />
               )}
             </div>
           </div>
