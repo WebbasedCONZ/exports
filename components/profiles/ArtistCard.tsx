@@ -3,6 +3,24 @@ import Image from 'next/image';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
+// Curated rave/DJ/techno Unsplash photos for fallback
+const ARTIST_PHOTOS = [
+  'photo-1493225457124-a3eb161ffa5f', // DJ performing
+  'photo-1540575467063-178a50c2df87', // rave crowd lights
+  'photo-1516450360452-9312f5e86fc7', // concert strobe
+  'photo-1571266028243-e4733b0f0bb0', // festival night
+  'photo-1598300042247-d088f8ab3a91', // dark nightclub
+  'photo-1614680376573-df3480f0c6a0', // DJ headphones
+  'photo-1571019613454-1cb2f99b2d8b', // vinyl records
+  'photo-1459749411175-04bf5292ceea', // concert lights
+];
+
+function getFallbackPhoto(id: string): string {
+  const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const photoId = ARTIST_PHOTOS[hash % ARTIST_PHOTOS.length];
+  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+}
+
 // Genre color map for pills
 const GENRE_COLORS: Record<string, string> = {
   'Techno': '#1d4ed8', 'House': '#b45309', 'Jungle': '#c2410c',
@@ -24,14 +42,12 @@ export default function ArtistCard({ artist }: { artist: any }) {
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         {/* Image / Placeholder */}
         <div className="aspect-[4/3] relative overflow-hidden bg-[#111]">
-          {photo ? (
-            <Image src={photo} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-          ) : (
-            <div className="absolute inset-0 flex items-end p-3"
-              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #0d1a4a 50%, #1a0a3a 100%)' }}>
-              <div className="w-full h-px bg-[#3d52ff]/30" />
-            </div>
-          )}
+          <Image
+            src={photo ?? getFallbackPhoto(artist.id)}
+            alt={name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
           {/* Genre pills on image */}

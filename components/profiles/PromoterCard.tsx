@@ -2,6 +2,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin, Calendar, ArrowRight, ShieldCheck } from 'lucide-react';
 
+const PROMOTER_PHOTOS = [
+  'photo-1516450360452-9312f5e86fc7', // concert crowd
+  'photo-1540575467063-178a50c2df87', // festival lights
+  'photo-1571266028243-e4733b0f0bb0', // outdoor festival
+  'photo-1598300042247-d088f8ab3a91', // dark club interior
+  'photo-1459749411175-04bf5292ceea', // stage lights
+  'photo-1524368535928-5b5e00ddc76b', // DJ crowd
+];
+
+function getFallbackPhoto(id: string): string {
+  const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const photoId = PROMOTER_PHOTOS[hash % PROMOTER_PHOTOS.length];
+  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+}
+
 const GENRE_COLORS: Record<string, string> = {
   'Techno': '#1d4ed8', 'House': '#b45309', 'Jungle': '#c2410c',
   'Drum & Bass': '#065f46', 'UKG': '#0d9488', '140': '#7c3aed',
@@ -21,12 +36,12 @@ export default function PromoterCard({ promoter }: { promoter: any }) {
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         {/* Image */}
         <div className="aspect-video relative overflow-hidden bg-[#111]">
-          {photo ? (
-            <Image src={photo} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-          ) : (
-            <div className="absolute inset-0"
-              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #0d2a1a 50%, #0a0a0a 100%)' }} />
-          )}
+          <Image
+            src={photo ?? getFallbackPhoto(promoter.id)}
+            alt={name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
           {/* Trusted badge */}

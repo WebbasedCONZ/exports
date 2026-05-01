@@ -3,6 +3,23 @@ import Image from 'next/image';
 import { Calendar, MapPin, EyeOff, ArrowRight } from 'lucide-react';
 import { formatDate, statusColor, daysUntil } from '@/lib/utils';
 
+const EVENT_PHOTOS = [
+  'photo-1516450360452-9312f5e86fc7',
+  'photo-1540575467063-178a50c2df87',
+  'photo-1571266028243-e4733b0f0bb0',
+  'photo-1598300042247-d088f8ab3a91',
+  'photo-1459749411175-04bf5292ceea',
+  'photo-1493225457124-a3eb161ffa5f',
+  'photo-1524368535928-5b5e00ddc76b',
+  'photo-1481883836041-bba898e2b9e5',
+];
+
+function getFallbackPhoto(id: string): string {
+  const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const photoId = EVENT_PHOTOS[hash % EVENT_PHOTOS.length];
+  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+}
+
 const GENRE_COLORS: Record<string, string> = {
   'Techno': '#1d4ed8', 'House': '#b45309', 'Jungle': '#c2410c',
   'Drum & Bass': '#065f46', 'UKG': '#0d9488', '140': '#7c3aed',
@@ -21,11 +38,12 @@ export default function EventCard({ event, venueName }: { event: any; venueName?
     <Link href={`/events/${event.slug}`} className="brutal-card block group">
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         <div className="aspect-video relative overflow-hidden bg-[#111]">
-          {poster ? (
-            <Image src={poster} alt={event.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-          ) : (
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #0a0d2a 50%, #1a0a0a 100%)' }} />
-          )}
+          <Image
+            src={poster ?? getFallbackPhoto(event.id)}
+            alt={event.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
           <div className="absolute top-3 right-3 flex items-center gap-2">

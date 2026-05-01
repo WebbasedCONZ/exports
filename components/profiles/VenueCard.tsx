@@ -3,6 +3,20 @@ import Image from 'next/image';
 import { MapPin, Users, ArrowRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
+const VENUE_PHOTOS = [
+  'photo-1598300042247-d088f8ab3a91', // dark nightclub interior
+  'photo-1571266028243-e4733b0f0bb0', // venue exterior night
+  'photo-1516450360452-9312f5e86fc7', // concert hall
+  'photo-1540575467063-178a50c2df87', // large venue
+  'photo-1481883836041-bba898e2b9e5', // club interior
+];
+
+function getFallbackPhoto(id: string): string {
+  const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const photoId = VENUE_PHOTOS[hash % VENUE_PHOTOS.length];
+  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=600&q=80`;
+}
+
 export default function VenueCard({ venue }: { venue: any }) {
   const name = venue.profile?.display_name ?? venue.name ?? 'Unknown Venue';
   const slug = venue.profile?.slug ?? venue.id;
@@ -15,12 +29,12 @@ export default function VenueCard({ venue }: { venue: any }) {
       <div className="bg-[#0a0a0a] border border-white/8 rounded-sm overflow-hidden">
         {/* Image */}
         <div className="aspect-video relative overflow-hidden bg-[#111]">
-          {photo ? (
-            <Image src={photo} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-          ) : (
-            <div className="absolute inset-0"
-              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0d0a1a 100%)' }} />
-          )}
+          <Image
+            src={photo ?? getFallbackPhoto(venue.id)}
+            alt={name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
           {/* Capacity badge */}
