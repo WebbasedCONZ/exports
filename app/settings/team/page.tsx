@@ -37,7 +37,7 @@ export default function TeamSettingsPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
       <div className="flex items-center gap-3 mb-8">
-        <Settings size={20} className="text-[#c6ff00]" />
+        <Settings size={20} className="text-[#3d52ff]" />
         <h1 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Team & Settings</h1>
       </div>
 
@@ -84,7 +84,7 @@ export default function TeamSettingsPage() {
               <Mail size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#444]" />
               <input type="email" value={email} onChange={e => setEmail(e.target.value)} required
                 placeholder="their@email.com"
-                className="w-full pl-7 pr-3 py-2 bg-[#1a1a1a] border border-[#252525] rounded-sm text-sm text-[#ededed] focus:outline-none focus:border-[#c6ff00]" />
+                className="w-full pl-7 pr-3 py-2 bg-[#1a1a1a] border border-[#252525] rounded-sm text-sm text-[#ededed] focus:outline-none focus:border-[#3d52ff]" />
             </div>
             <select value={role} onChange={e => setRole(e.target.value as any)}
               className="bg-[#1a1a1a] border border-[#252525] rounded-sm px-2 py-2 text-sm text-[#888] focus:outline-none capitalize">
@@ -96,9 +96,9 @@ export default function TeamSettingsPage() {
             <p><span className="text-[#555]">Admin</span> — full access except billing</p>
             <p><span className="text-[#555]">Manager</span> — can manage artist profile and bookings</p>
           </div>
-          {success && <p className="text-xs text-[#c6ff00]">✓ {success}</p>}
+          {success && <p className="text-xs text-[#3d52ff]">✓ {success}</p>}
           <button type="submit" disabled={inviting}
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#c6ff00] text-black text-xs font-semibold rounded-sm hover:bg-[#b5ee00] transition-colors disabled:opacity-50">
+            className="flex items-center gap-1.5 px-4 py-2 bg-[#3d52ff] text-black text-xs font-semibold rounded-sm hover:bg-[#2a3fe0] transition-colors disabled:opacity-50">
             <Plus size={12} /> {inviting ? 'Sending...' : 'Send Invite'}
           </button>
         </form>
@@ -149,7 +149,7 @@ function AvailableTonightToggle({ artistId }: { artistId: string }) {
         <p className="text-xs text-[#555] mt-0.5">Let promoters find you for last-minute bookings. Auto-expires in 8 hours.</p>
       </div>
       <button onClick={toggle} disabled={saving}
-        className={`relative w-11 h-6 rounded-full transition-colors ${available ? 'bg-[#c6ff00]' : 'bg-[#252525]'}`}>
+        className={`relative w-11 h-6 rounded-full transition-colors ${available ? 'bg-[#3d52ff]' : 'bg-[#252525]'}`}>
         <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-transform ${available ? 'translate-x-6' : 'translate-x-1'}`} />
       </button>
     </div>

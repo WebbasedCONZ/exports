@@ -133,13 +133,13 @@ export default function EventDetailPage() {
                         {slot.notes && <p className="text-xs text-[#666] mt-2 leading-relaxed">{slot.notes}</p>}
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <div className="flex items-center gap-1 text-[#c6ff00] font-semibold text-sm mb-2 justify-end">
+                        <div className="flex items-center gap-1 text-[#3d52ff] font-semibold text-sm mb-2 justify-end">
                           <DollarSign size={12} />
                           {formatCurrency(slot.fee, slot.currency)}
                         </div>
                         {event.status === 'Open' && user?.role === 'artist' && (
                           applied ? (
-                            <span className="text-xs px-3 py-1 rounded-sm border border-[#c6ff00]/20 text-[#c6ff00] bg-[#c6ff00]/5">
+                            <span className="text-xs px-3 py-1 rounded-sm border border-[#3d52ff]/20 text-[#3d52ff] bg-[#3d52ff]/5">
                               Applied ({slotApp?.status})
                             </span>
                           ) : (
@@ -188,7 +188,7 @@ export default function EventDetailPage() {
           {user?.role === 'promoter' && user.profileId === event.promoterId && (
             <Link
               href={`/events/${event.slug}/applicants`}
-              className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#c6ff00] text-black text-sm font-semibold rounded-sm hover:bg-[#b5ee00] transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#3d52ff] text-black text-sm font-semibold rounded-sm hover:bg-[#2a3fe0] transition-colors"
             >
               View Applicants ({applications.length})
             </Link>
@@ -201,7 +201,7 @@ export default function EventDetailPage() {
         {submitted ? (
           <div className="text-center py-6">
             <div className="text-4xl mb-3">✓</div>
-            <p className="font-semibold text-[#c6ff00]">Application submitted!</p>
+            <p className="font-semibold text-[#3d52ff]">Application submitted!</p>
           </div>
         ) : (
           <div className="space-y-4">

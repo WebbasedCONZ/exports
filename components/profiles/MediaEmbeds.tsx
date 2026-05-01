@@ -7,7 +7,7 @@ interface Embed {
 }
 
 function getSoundCloudUrl(url: string) {
-  return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%23c6ff00&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true`;
+  return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%233d52ff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true`;
 }
 
 function getMixcloudUrl(url: string) {

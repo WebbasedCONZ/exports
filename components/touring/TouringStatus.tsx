@@ -52,7 +52,7 @@ export default function TouringStatus({ artistId, editable = false }: Props) {
 
           {!adding ? (
             <button onClick={() => setAdding(true)}
-              className="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#c6ff00] transition-colors">
+              className="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#3d52ff] transition-colors">
               <Plus size={13} /> Add touring window
             </button>
           ) : (
@@ -68,7 +68,7 @@ export default function TouringStatus({ artistId, editable = false }: Props) {
                   className="bg-[#0a0a0a] border border-[#252525] rounded-sm px-2 py-1.5 text-sm text-[#ededed] focus:outline-none focus:border-[#00d4ff]" />
               </div>
               <div className="flex gap-2">
-                <button type="submit" className="flex-1 py-1.5 bg-[#c6ff00] text-black text-xs font-semibold rounded-sm">Save</button>
+                <button type="submit" className="flex-1 py-1.5 bg-[#3d52ff] text-black text-xs font-semibold rounded-sm">Save</button>
                 <button type="button" onClick={() => setAdding(false)} className="px-3 py-1.5 border border-[#252525] text-xs text-[#555] rounded-sm">Cancel</button>
               </div>
             </form>

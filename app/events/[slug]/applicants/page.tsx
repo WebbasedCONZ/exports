@@ -69,7 +69,7 @@ export default function ApplicantsPage() {
                 <div className="flex items-center gap-3">
                   <div className="text-right text-xs text-[#555]">
                     <p>{slotApps.length} application{slotApps.length !== 1 ? 's' : ''}</p>
-                    <p className="text-[#c6ff00]">Top {Math.min(shortlist.length, 5)} shown</p>
+                    <p className="text-[#3d52ff]">Top {Math.min(shortlist.length, 5)} shown</p>
                   </div>
                   {/* Emergency button per slot */}
                   <EmergencyButton
@@ -154,7 +154,7 @@ export default function ApplicantsPage() {
                             {app.status === 'Pending' && (
                               <div className="flex gap-2">
                                 <button onClick={() => updateStatus(app.id, 'Shortlisted')}
-                                  className="p-1.5 rounded-sm border border-[#c6ff00]/20 text-[#c6ff00] hover:bg-[#c6ff00]/10 transition-colors"
+                                  className="p-1.5 rounded-sm border border-[#3d52ff]/20 text-[#3d52ff] hover:bg-[#3d52ff]/10 transition-colors"
                                   title="Shortlist">
                                   <CheckCircle size={14} />
                                 </button>
@@ -167,13 +167,13 @@ export default function ApplicantsPage() {
                             )}
                             {app.status === 'Shortlisted' && (
                               <button onClick={() => updateStatus(app.id, 'Confirmed')}
-                                className="px-3 py-1.5 bg-[#c6ff00] text-black text-xs font-semibold rounded-sm hover:bg-[#b5ee00] transition-colors">
+                                className="px-3 py-1.5 bg-[#3d52ff] text-black text-xs font-semibold rounded-sm hover:bg-[#2a3fe0] transition-colors">
                                 Confirm
                               </button>
                             )}
                             {/* Fee negotiation toggle */}
                             <button onClick={() => toggleNeg(app.id)}
-                              className="flex items-center gap-1 text-xs text-[#555] hover:text-[#c6ff00] transition-colors">
+                              className="flex items-center gap-1 text-xs text-[#555] hover:text-[#3d52ff] transition-colors">
                               {negOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
                               Negotiate fee
                             </button>

@@ -5,7 +5,7 @@ export default function LoadInInfo({ info }: { info: Venue['loadInInfo'] }) {
   return (
     <div className="space-y-4 text-sm">
       <div className="flex gap-3">
-        <Clock size={15} className="text-[#c6ff00] mt-0.5 flex-shrink-0" />
+        <Clock size={15} className="text-[#3d52ff] mt-0.5 flex-shrink-0" />
         <div>
           <p className="text-xs text-[#555] uppercase tracking-wide font-medium mb-1">Access Time</p>
           <p className="text-[#ccc]">{info.accessTime}</p>
@@ -19,11 +19,11 @@ export default function LoadInInfo({ info }: { info: Venue['loadInInfo'] }) {
         </div>
       </div>
       <div className="flex gap-4 pt-1">
-        <div className={`flex items-center gap-1.5 text-xs ${info.parkingAvailable ? 'text-[#c6ff00]' : 'text-[#444]'}`}>
+        <div className={`flex items-center gap-1.5 text-xs ${info.parkingAvailable ? 'text-[#3d52ff]' : 'text-[#444]'}`}>
           <SquareParking size={13} />
           Parking {info.parkingAvailable ? 'available' : 'unavailable'}
         </div>
-        <div className={`flex items-center gap-1.5 text-xs ${info.elevatorAccess ? 'text-[#c6ff00]' : 'text-[#444]'}`}>
+        <div className={`flex items-center gap-1.5 text-xs ${info.elevatorAccess ? 'text-[#3d52ff]' : 'text-[#444]'}`}>
           <MoveVertical size={13} />
           Elevator {info.elevatorAccess ? 'available' : 'unavailable'}
         </div>

@@ -79,7 +79,7 @@ export default function DjsDjPage() {
                 </div>
                 <div className="flex-1">
                   <Link href={`/artists/${entry.artist?.profile?.slug}`}
-                    className="font-semibold text-sm hover:text-[#c6ff00] transition-colors">
+                    className="font-semibold text-sm hover:text-[#3d52ff] transition-colors">
                     {entry.artist?.profile?.display_name}
                   </Link>
                   <p className="text-xs text-[#555]">{entry.artist?.profile?.location_city}</p>
@@ -100,11 +100,11 @@ export default function DjsDjPage() {
         <p className="text-xs text-[#555] mb-4">You can nominate one artist per month. Only established artists (3+ gigs) can nominate.</p>
 
         {!profile ? (
-          <Link href="/auth/login" className="text-sm text-[#c6ff00] hover:underline">Sign in to nominate →</Link>
+          <Link href="/auth/login" className="text-sm text-[#3d52ff] hover:underline">Sign in to nominate →</Link>
         ) : !myArtist ? (
           <p className="text-sm text-[#555]">Only artists can submit nominations.</p>
         ) : nominated ? (
-          <div className="flex items-center gap-2 text-sm text-[#c6ff00]">
+          <div className="flex items-center gap-2 text-sm text-[#3d52ff]">
             <Star size={14} fill="currentColor" /> Nomination submitted for {monthLabel}!
           </div>
         ) : (
@@ -115,7 +115,7 @@ export default function DjsDjPage() {
                 value={query}
                 onChange={e => setQuery(e.target.value)}
                 placeholder="Search artists..."
-                className="w-full pl-8 pr-3 py-2 bg-[#1a1a1a] border border-[#252525] rounded-sm text-sm text-[#ededed] focus:outline-none focus:border-[#c6ff00]"
+                className="w-full pl-8 pr-3 py-2 bg-[#1a1a1a] border border-[#252525] rounded-sm text-sm text-[#ededed] focus:outline-none focus:border-[#3d52ff]"
               />
             </div>
             {query && (

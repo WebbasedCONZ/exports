@@ -33,7 +33,7 @@ export default function GigsPage() {
       {gigsWithDetails.length === 0 ? (
         <div className="text-center py-20 text-[#444]">
           <p className="text-sm mb-3">No applications yet.</p>
-          <Link href="/events" className="text-xs text-[#c6ff00] hover:underline">Browse open gigs →</Link>
+          <Link href="/events" className="text-xs text-[#3d52ff] hover:underline">Browse open gigs →</Link>
         </div>
       ) : (
         <div className="space-y-3">
@@ -44,7 +44,7 @@ export default function GigsPage() {
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Link href={`/events/${event!.slug}`} className="font-semibold text-sm hover:text-[#c6ff00] transition-colors">
+                      <Link href={`/events/${event!.slug}`} className="font-semibold text-sm hover:text-[#3d52ff] transition-colors">
                         {event!.title}
                       </Link>
                       <span className="text-xs px-2 py-0.5 rounded-sm border flex-shrink-0"
@@ -59,7 +59,7 @@ export default function GigsPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    {slot && <p className="text-[#c6ff00] font-semibold text-sm">{formatCurrency(slot.fee, slot.currency)}</p>}
+                    {slot && <p className="text-[#3d52ff] font-semibold text-sm">{formatCurrency(slot.fee, slot.currency)}</p>}
                     {app.status === 'Confirmed' && (
                       <Link href={`/settlement/${event!.id}`} className="text-xs text-[#00d4ff] hover:underline mt-1 block">
                         View settlement →

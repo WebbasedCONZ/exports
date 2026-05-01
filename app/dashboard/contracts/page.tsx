@@ -49,12 +49,12 @@ export default function ContractsPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-[#c6ff00] font-semibold">{formatCurrency(totalFee, 'NZD')}</p>
+                    <p className="text-[#3d52ff] font-semibold">{formatCurrency(totalFee, 'NZD')}</p>
                     <p className="text-xs text-[#555] mt-1">
                       Paid: {formatCurrency(totalPaid, 'NZD')}
                     </p>
                     {c.status === 'SignedByBoth' && (
-                      <div className="flex items-center gap-1 text-[10px] text-[#c6ff00] mt-1 justify-end">
+                      <div className="flex items-center gap-1 text-[10px] text-[#3d52ff] mt-1 justify-end">
                         <CheckCircle size={10} /> Fully signed
                       </div>
                     )}

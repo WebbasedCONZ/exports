@@ -53,7 +53,7 @@ export default function EmergencyButton({ eventId, slotId, slotFee, currency, ev
                 <div className="bg-[#1a1a1a] border border-[#252525] rounded-sm p-4 space-y-2 text-sm">
                   <p className="text-[#888]">Slot: <span className="text-[#ededed]">{slotLabel}</span></p>
                   <p className="text-[#888]">Original fee: <span className="text-[#ededed]">{currency} {slotFee}</span></p>
-                  <p className="text-[#888]">Short-notice premium (20%): <span className="text-[#c6ff00] font-bold">{currency} {premiumFee}</span></p>
+                  <p className="text-[#888]">Short-notice premium (20%): <span className="text-[#3d52ff] font-bold">{currency} {premiumFee}</span></p>
                   {eventCity && <p className="text-[#888]">Searching within: <span className="text-[#ededed]">{eventCity} area</span></p>}
                 </div>
                 <p className="text-xs text-[#555] leading-relaxed">
@@ -67,12 +67,12 @@ export default function EmergencyButton({ eventId, slotId, slotFee, currency, ev
               </>
             ) : (
               <div className="text-center space-y-3 py-4">
-                <div className="w-12 h-12 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/30 flex items-center justify-center mx-auto">
-                  <Zap size={20} className="text-[#c6ff00]" />
+                <div className="w-12 h-12 rounded-full bg-[#3d52ff]/10 border border-[#3d52ff]/30 flex items-center justify-center mx-auto">
+                  <Zap size={20} className="text-[#3d52ff]" />
                 </div>
                 <p className="font-semibold text-[#ededed]">Emergency blast sent!</p>
                 <p className="text-sm text-[#888]">
-                  <span className="text-[#c6ff00] font-bold">{result?.notified ?? 0}</span> DJs notified with a {currency} {result?.premiumFee} premium offer.
+                  <span className="text-[#3d52ff] font-bold">{result?.notified ?? 0}</span> DJs notified with a {currency} {result?.premiumFee} premium offer.
                 </p>
                 <p className="text-xs text-[#555]">You'll be notified the moment someone accepts.</p>
                 <button onClick={() => setOpen(false)}

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div>
           <Link href="/" className="flex items-center gap-2 mb-3">
-            <div className="w-6 h-6 bg-[#c6ff00] rounded-sm flex items-center justify-center">
+            <div className="w-6 h-6 bg-[#3d52ff] rounded-sm flex items-center justify-center">
               <Zap size={12} className="text-black" fill="black" />
             </div>
             <span className="font-bold text-sm tracking-[0.15em] uppercase">EXPORTS</span>

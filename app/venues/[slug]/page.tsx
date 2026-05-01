@@ -46,9 +46,9 @@ export default function VenueProfilePage() {
           {venue.venueFee.feeType === 'negotiable' ? (
             <span className="text-[#00d4ff] font-semibold text-sm">Negotiable</span>
           ) : venue.venueFee.feeType === 'percentage' ? (
-            <span className="text-[#c6ff00] font-semibold text-sm">{venue.venueFee.amount}% of door</span>
+            <span className="text-[#3d52ff] font-semibold text-sm">{venue.venueFee.amount}% of door</span>
           ) : (
-            <span className="text-[#c6ff00] font-semibold text-sm">{formatCurrency(venue.venueFee.amount, venue.venueFee.currency)}</span>
+            <span className="text-[#3d52ff] font-semibold text-sm">{formatCurrency(venue.venueFee.amount, venue.venueFee.currency)}</span>
           )}
           {venue.venueFee.notes && <p className="text-[10px] text-[#444] mt-1 max-w-xs">{venue.venueFee.notes}</p>}
         </div>

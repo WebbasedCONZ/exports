@@ -28,7 +28,7 @@ export default function FeeNegotiation({ applicationId, originalFee, currency }:
         <p className="text-xs text-[#555] uppercase tracking-wide">Fee Negotiation</p>
         {!agreedFee && (
           <button onClick={() => setShowing(!showing)}
-            className="text-xs text-[#c6ff00] hover:underline">
+            className="text-xs text-[#3d52ff] hover:underline">
             {showing ? 'Hide' : 'Make Offer'}
           </button>
         )}
@@ -45,18 +45,18 @@ export default function FeeNegotiation({ applicationId, originalFee, currency }:
         <div className="space-y-2">
           {negotiations.map((n, i) => (
             <div key={n.id} className={`flex items-center gap-2 text-xs py-2 px-3 rounded-sm border ${
-              n.status === 'Accepted' ? 'border-[#c6ff00]/30 bg-[#c6ff00]/5' :
+              n.status === 'Accepted' ? 'border-[#3d52ff]/30 bg-[#3d52ff]/5' :
               n.status === 'Rejected' ? 'border-[#ff4444]/20 bg-[#ff4444]/5' :
               'border-[#252525] bg-[#1a1a1a]'
             }`}>
-              <DollarSign size={11} className={n.status === 'Accepted' ? 'text-[#c6ff00]' : 'text-[#555]'} />
-              <span className={n.status === 'Accepted' ? 'text-[#c6ff00] font-semibold' : 'text-[#ededed]'}>
+              <DollarSign size={11} className={n.status === 'Accepted' ? 'text-[#3d52ff]' : 'text-[#555]'} />
+              <span className={n.status === 'Accepted' ? 'text-[#3d52ff] font-semibold' : 'text-[#ededed]'}>
                 {currency} {n.amount}
               </span>
               <span className="text-[#555]">by {n.proposed_by_profile?.display_name ?? 'You'}</span>
               {n.note && <span className="text-[#444] italic">— {n.note}</span>}
               <span className={`ml-auto text-[10px] px-1.5 py-0.5 rounded-sm ${
-                n.status === 'Accepted' ? 'bg-[#c6ff00]/20 text-[#c6ff00]' :
+                n.status === 'Accepted' ? 'bg-[#3d52ff]/20 text-[#3d52ff]' :
                 n.status === 'Rejected' ? 'bg-[#ff4444]/20 text-[#ff4444]' :
                 n.status === 'Countered' ? 'text-[#555]' :
                 'bg-[#252525] text-[#888]'
@@ -68,9 +68,9 @@ export default function FeeNegotiation({ applicationId, originalFee, currency }:
 
       {/* Agreed fee banner */}
       {agreedFee && (
-        <div className="flex items-center gap-2 p-3 bg-[#c6ff00]/10 border border-[#c6ff00]/30 rounded-sm">
-          <Check size={14} className="text-[#c6ff00]" />
-          <span className="text-sm font-semibold text-[#c6ff00]">Agreed: {currency} {agreedFee.amount}</span>
+        <div className="flex items-center gap-2 p-3 bg-[#3d52ff]/10 border border-[#3d52ff]/30 rounded-sm">
+          <Check size={14} className="text-[#3d52ff]" />
+          <span className="text-sm font-semibold text-[#3d52ff]">Agreed: {currency} {agreedFee.amount}</span>
         </div>
       )}
 
@@ -78,7 +78,7 @@ export default function FeeNegotiation({ applicationId, originalFee, currency }:
       {canRespond && (
         <div className="flex gap-2">
           <button onClick={() => acceptOffer(latestOffer.id)}
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-[#c6ff00] text-black text-xs font-semibold rounded-sm">
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-[#3d52ff] text-black text-xs font-semibold rounded-sm">
             <Check size={12} /> Accept {currency} {latestOffer.amount}
           </button>
           <button onClick={() => { rejectOffer(latestOffer.id); }}
@@ -102,10 +102,10 @@ export default function FeeNegotiation({ applicationId, originalFee, currency }:
           </div>
           <input value={note} onChange={e => setNote(e.target.value)}
             placeholder="Add a note (optional)"
-            className="w-full bg-[#0a0a0a] border border-[#252525] rounded-sm px-2 py-1.5 text-xs text-[#ededed] focus:outline-none focus:border-[#c6ff00]" />
+            className="w-full bg-[#0a0a0a] border border-[#252525] rounded-sm px-2 py-1.5 text-xs text-[#ededed] focus:outline-none focus:border-[#3d52ff]" />
           <button onClick={() => { proposeOffer(profile.id, Number(amount), currency, note || undefined); setShowing(false); setAmount(''); setNote(''); }}
             disabled={!amount}
-            className="w-full flex items-center justify-center gap-1.5 py-2 bg-[#c6ff00] text-black text-xs font-semibold rounded-sm disabled:opacity-40">
+            className="w-full flex items-center justify-center gap-1.5 py-2 bg-[#3d52ff] text-black text-xs font-semibold rounded-sm disabled:opacity-40">
             <ArrowRight size={12} /> Send Offer
           </button>
         </div>

@@ -149,7 +149,7 @@ export default function PromoterProfilePage() {
             )}
           </section>
 
-          <Link href="/events/new" className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#c6ff00] text-black text-sm font-semibold rounded-sm hover:bg-[#b5ee00] transition-colors">
+          <Link href="/events/new" className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#3d52ff] text-black text-sm font-semibold rounded-sm hover:bg-[#2a3fe0] transition-colors">
             Post a Gig
           </Link>
         </div>

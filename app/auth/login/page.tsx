@@ -80,7 +80,7 @@ export default function LoginPage() {
           <div className="flex border border-[#252525] rounded-sm overflow-hidden">
             {(['signin', 'signup'] as const).map(m => (
               <button key={m} onClick={() => setMode(m)}
-                className={`flex-1 py-2 text-sm font-medium transition-colors ${mode === m ? 'bg-[#c6ff00] text-black' : 'text-[#555] hover:text-[#ededed]'}`}>
+                className={`flex-1 py-2 text-sm font-medium transition-colors ${mode === m ? 'bg-[#3d52ff] text-black' : 'text-[#555] hover:text-[#ededed]'}`}>
                 {m === 'signin' ? 'Sign In' : 'Sign Up'}
               </button>
             ))}
@@ -92,7 +92,7 @@ export default function LoginPage() {
               <div className="grid grid-cols-3 gap-2">
                 {(['artist', 'promoter', 'venue'] as const).map(r => (
                   <button key={r} onClick={() => setRole(r)}
-                    className={`py-2 text-sm rounded-sm border transition-colors capitalize ${role === r ? 'border-[#c6ff00] text-[#c6ff00] bg-[#c6ff00]/5' : 'border-[#252525] text-[#555] hover:border-[#3a3a3a]'}`}>
+                    className={`py-2 text-sm rounded-sm border transition-colors capitalize ${role === r ? 'border-[#3d52ff] text-[#3d52ff] bg-[#3d52ff]/5' : 'border-[#252525] text-[#555] hover:border-[#3a3a3a]'}`}>
                     {r}
                   </button>
                 ))}
@@ -105,27 +105,27 @@ export default function LoginPage() {
               <div>
                 <label className="text-xs text-[#555] uppercase tracking-wide block mb-1">Display Name</label>
                 <input value={displayName} onChange={e => setDisplayName(e.target.value)} required
-                  className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#c6ff00]"
+                  className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#3d52ff]"
                   placeholder="Your artist / brand name" />
               </div>
             )}
             <div>
               <label className="text-xs text-[#555] uppercase tracking-wide block mb-1">Email</label>
               <input type="email" value={email} onChange={e => setEmail(e.target.value)} required
-                className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#c6ff00]"
+                className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#3d52ff]"
                 placeholder="your@email.com" />
             </div>
             <div>
               <label className="text-xs text-[#555] uppercase tracking-wide block mb-1">Password</label>
               <input type="password" value={password} onChange={e => setPassword(e.target.value)} required
-                className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#c6ff00]"
+                className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#3d52ff]"
                 placeholder="••••••••" />
             </div>
 
             {error && <p className="text-xs text-[#ff4444]">{error}</p>}
 
             <button type="submit" disabled={loading}
-              className="w-full py-2.5 bg-[#c6ff00] text-black font-semibold text-sm rounded-sm hover:bg-[#b5ee00] transition-colors disabled:opacity-50">
+              className="w-full py-2.5 bg-[#3d52ff] text-black font-semibold text-sm rounded-sm hover:bg-[#2a3fe0] transition-colors disabled:opacity-50">
               {loading ? 'Loading...' : mode === 'signin' ? 'Sign In' : 'Create Account'}
             </button>
           </form>
@@ -147,7 +147,7 @@ export default function LoginPage() {
               </button>
             </form>
           ) : (
-            <p className="text-sm text-[#c6ff00] text-center">✓ Check your email for a sign-in link</p>
+            <p className="text-sm text-[#3d52ff] text-center">✓ Check your email for a sign-in link</p>
           )}
         </div>
       </div>

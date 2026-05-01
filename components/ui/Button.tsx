@@ -14,10 +14,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed',
           {
-            'bg-[#c6ff00] text-black hover:bg-[#b5ee00] active:scale-95': variant === 'primary',
+            'bg-[#3d52ff] text-black hover:bg-[#2a3fe0] active:scale-95': variant === 'primary',
             'bg-[#1a1a1a] text-[#ededed] border border-[#252525] hover:border-[#3a3a3a] hover:bg-[#222]': variant === 'secondary',
             'bg-transparent text-[#888] hover:text-[#ededed] hover:bg-[#1a1a1a]': variant === 'ghost',
-            'bg-transparent border border-[#252525] text-[#ededed] hover:border-[#c6ff00] hover:text-[#c6ff00]': variant === 'outline',
+            'bg-transparent border border-[#252525] text-[#ededed] hover:border-[#3d52ff] hover:text-[#3d52ff]': variant === 'outline',
             'bg-[#ff4444]/10 text-[#ff4444] border border-[#ff4444]/20 hover:bg-[#ff4444]/20': variant === 'danger',
           },
           {

@@ -56,7 +56,7 @@ export default function ConversationPage() {
                   }
                 </div>
               )}
-              <div className={`max-w-[75%] px-3 py-2 rounded-md text-sm ${isMe ? 'bg-[#c6ff00] text-black' : 'bg-[#1a1a1a] border border-[#252525] text-[#ededed]'}`}>
+              <div className={`max-w-[75%] px-3 py-2 rounded-md text-sm ${isMe ? 'bg-[#3d52ff] text-black' : 'bg-[#1a1a1a] border border-[#252525] text-[#ededed]'}`}>
                 {msg.content}
               </div>
             </div>
@@ -71,10 +71,10 @@ export default function ConversationPage() {
           value={text}
           onChange={e => setText(e.target.value)}
           placeholder="Type a message..."
-          className="flex-1 bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#c6ff00]"
+          className="flex-1 bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] focus:outline-none focus:border-[#3d52ff]"
         />
         <button type="submit" disabled={!text.trim() || sending}
-          className="px-3 py-2 bg-[#c6ff00] text-black rounded-sm hover:bg-[#b5ee00] transition-colors disabled:opacity-40">
+          className="px-3 py-2 bg-[#3d52ff] text-black rounded-sm hover:bg-[#2a3fe0] transition-colors disabled:opacity-40">
           <Send size={15} />
         </button>
       </form>

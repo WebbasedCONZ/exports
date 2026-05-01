@@ -105,7 +105,7 @@ export default function NewEventPage() {
       {submitted ? (
         <div className="text-center py-20">
           <div className="text-5xl mb-4">✓</div>
-          <p className="font-semibold text-[#c6ff00] text-lg">Gig posted!</p>
+          <p className="font-semibold text-[#3d52ff] text-lg">Gig posted!</p>
           <p className="text-[#555] text-sm mt-2">Redirecting...</p>
         </div>
       ) : (
@@ -145,7 +145,7 @@ export default function NewEventPage() {
             <label className="flex items-center gap-3 cursor-pointer">
               <div
                 onClick={() => setBlind(!blind)}
-                className={`w-10 h-5 rounded-full transition-colors ${blind ? 'bg-[#c6ff00]' : 'bg-[#252525]'}`}
+                className={`w-10 h-5 rounded-full transition-colors ${blind ? 'bg-[#3d52ff]' : 'bg-[#252525]'}`}
               >
                 <div className={`w-4 h-4 rounded-full bg-white mt-0.5 transition-transform ${blind ? 'translate-x-5' : 'translate-x-0.5'}`} />
               </div>
@@ -160,7 +160,7 @@ export default function NewEventPage() {
             <div className="flex items-center justify-between pb-2 border-b border-[#1a1a1a]">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-[#555]">Slots</h2>
               <button type="button" onClick={() => setSlots([...slots, emptySlot()])}
-                className="flex items-center gap-1.5 text-xs text-[#c6ff00] hover:text-[#b5ee00] transition-colors">
+                className="flex items-center gap-1.5 text-xs text-[#3d52ff] hover:text-[#2a3fe0] transition-colors">
                 <Plus size={12} /> Add Slot
               </button>
             </div>

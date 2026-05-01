@@ -22,7 +22,7 @@ export default function DashboardPage() {
     return (
       <div className="max-w-7xl mx-auto px-6 py-20 text-center">
         <p className="text-[#555] mb-4">No profile active.</p>
-        <Link href="/onboarding" className="text-[#c6ff00] hover:underline text-sm">Create a profile →</Link>
+        <Link href="/onboarding" className="text-[#3d52ff] hover:underline text-sm">Create a profile →</Link>
       </div>
     );
   }
@@ -52,13 +52,13 @@ export default function DashboardPage() {
           <span className="text-xs text-[#555]">Demo as:</span>
           <button
             onClick={() => switchUser({ role: 'artist', profileId: 'artist-001', displayName: 'SHIRIN', profilePhoto: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80' })}
-            className={`text-xs px-3 py-1 rounded-sm border transition-all ${user.profileId === 'artist-001' ? 'border-[#c6ff00]/40 text-[#c6ff00] bg-[#c6ff00]/8' : 'border-[#252525] text-[#555] hover:border-[#333]'}`}
+            className={`text-xs px-3 py-1 rounded-sm border transition-all ${user.profileId === 'artist-001' ? 'border-[#3d52ff]/40 text-[#3d52ff] bg-[#3d52ff]/8' : 'border-[#252525] text-[#555] hover:border-[#333]'}`}
           >
             Artist
           </button>
           <button
             onClick={() => switchUser({ role: 'promoter', profileId: 'promoter-001', displayName: 'NightShift', profilePhoto: 'https://images.unsplash.com/photo-1571266028243-d220c6a6c88f?w=600&q=80' })}
-            className={`text-xs px-3 py-1 rounded-sm border transition-all ${user.profileId === 'promoter-001' ? 'border-[#c6ff00]/40 text-[#c6ff00] bg-[#c6ff00]/8' : 'border-[#252525] text-[#555] hover:border-[#333]'}`}
+            className={`text-xs px-3 py-1 rounded-sm border transition-all ${user.profileId === 'promoter-001' ? 'border-[#3d52ff]/40 text-[#3d52ff] bg-[#3d52ff]/8' : 'border-[#252525] text-[#555] hover:border-[#333]'}`}
           >
             Promoter
           </button>
@@ -86,7 +86,7 @@ export default function DashboardPage() {
           { label: 'Applications', value: myApplications.length, sub: `${pendingApps.length} pending`, color: '#888' },
           { label: 'Confirmed Gigs', value: confirmedApps.length, sub: 'slots confirmed', color: '#00d4ff' },
           { label: 'Contracts', value: contracts.length, sub: `${pendingContracts.length} awaiting sign`, color: '#ffd700' },
-          { label: 'Open Gigs', value: upcomingEvents.length, sub: 'available to apply', color: '#c6ff00' },
+          { label: 'Open Gigs', value: upcomingEvents.length, sub: 'available to apply', color: '#3d52ff' },
         ].map((s) => (
           <div key={s.label} className="bg-[#141414] border border-[#252525] rounded-md p-4">
             <p className="text-2xl font-bold mb-0.5" style={{ color: s.color, fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>

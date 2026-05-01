@@ -62,7 +62,7 @@ export default function ArtistProfilePage() {
             </h1>
             <span className="text-xs text-[#555] border border-[#252525] px-2 py-0.5 rounded-sm">{artist.experience_level}</span>
             {artist.available_tonight && (
-              <span className="text-xs px-2 py-0.5 rounded-sm bg-[#c6ff00]/10 border border-[#c6ff00]/30 text-[#c6ff00]">Available Tonight</span>
+              <span className="text-xs px-2 py-0.5 rounded-sm bg-[#3d52ff]/10 border border-[#3d52ff]/30 text-[#3d52ff]">Available Tonight</span>
             )}
           </div>
           <div className="flex items-center gap-1 text-xs text-[#555]">
@@ -93,7 +93,7 @@ export default function ArtistProfilePage() {
           )}
           <div className="text-right">
             <p className="text-xs text-[#555]">From</p>
-            <p className="text-sm font-semibold text-[#c6ff00]">
+            <p className="text-sm font-semibold text-[#3d52ff]">
               {formatCurrency(artist.fee_minimum, artist.fee_currency)}
               {artist.fee_negotiable && <span className="text-[#555] text-xs font-normal ml-1">neg.</span>}
             </p>
@@ -175,11 +175,11 @@ export default function ArtistProfilePage() {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-[#555]">Minimum fee</span>
-                <span className="text-[#c6ff00] font-semibold">{formatCurrency(artist.fee_minimum, artist.fee_currency)}</span>
+                <span className="text-[#3d52ff] font-semibold">{formatCurrency(artist.fee_minimum, artist.fee_currency)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#555]">Negotiable</span>
-                <span className={artist.fee_negotiable ? 'text-[#c6ff00]' : 'text-[#555]'}>
+                <span className={artist.fee_negotiable ? 'text-[#3d52ff]' : 'text-[#555]'}>
                   {artist.fee_negotiable ? 'Yes' : 'No'}
                 </span>
               </div>
@@ -191,7 +191,7 @@ export default function ArtistProfilePage() {
             )}
             <Link
               href={`/events/new?artist=${artist.id}`}
-              className="mt-3 w-full flex items-center justify-center gap-2 py-2 bg-[#c6ff00] text-black text-sm font-semibold rounded-sm hover:bg-[#b5ee00] transition-colors"
+              className="mt-3 w-full flex items-center justify-center gap-2 py-2 bg-[#3d52ff] text-black text-sm font-semibold rounded-sm hover:bg-[#2a3fe0] transition-colors"
             >
               Post a Gig <ExternalLink size={13} />
             </Link>

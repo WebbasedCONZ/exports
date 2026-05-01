@@ -160,7 +160,7 @@ export default function SettlementPage() {
                         value={sigName}
                         onChange={(e) => setSigName(e.target.value)}
                         placeholder="Full name..."
-                        className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] placeholder-[#444] focus:outline-none focus:border-[#c6ff00]"
+                        className="w-full bg-[#1a1a1a] border border-[#252525] rounded-sm px-3 py-2 text-sm text-[#ededed] placeholder-[#444] focus:outline-none focus:border-[#3d52ff]"
                       />
                     </div>
                     <div className="flex gap-3">
@@ -176,7 +176,7 @@ export default function SettlementPage() {
                   </Button>
                 )
               ) : (
-                <div className="flex items-center gap-2 text-sm text-[#c6ff00]">
+                <div className="flex items-center gap-2 text-sm text-[#3d52ff]">
                   <CheckCircle2 size={16} />
                   {isArtist ? `You signed on ${formatDate(c.artistSignedAt!)}` : `You signed on ${formatDate(c.promoterSignedAt!)}`}
                 </div>
@@ -194,7 +194,7 @@ export default function SettlementPage() {
               ].map((s) => (
                 <div key={s.label} className="flex items-center justify-between text-sm">
                   <span className="flex items-center gap-2 text-[#888]">
-                    {s.signed ? <CheckCircle2 size={14} className="text-[#c6ff00]" /> : <Circle size={14} className="text-[#333]" />}
+                    {s.signed ? <CheckCircle2 size={14} className="text-[#3d52ff]" /> : <Circle size={14} className="text-[#333]" />}
                     {s.label}
                   </span>
                   <span className="text-xs text-[#555]">
@@ -219,11 +219,11 @@ export default function SettlementPage() {
               <div>
                 <div className="flex items-center justify-between text-xs mb-1.5">
                   <span className="text-[#555]">Paid</span>
-                  <span className="text-[#c6ff00] font-semibold">{formatCurrency(totalPaid, 'NZD')}</span>
+                  <span className="text-[#3d52ff] font-semibold">{formatCurrency(totalPaid, 'NZD')}</span>
                 </div>
                 <div className="h-1.5 bg-[#252525] rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-[#c6ff00] transition-all duration-500"
+                    className="h-full bg-[#3d52ff] transition-all duration-500"
                     style={{ width: totalFee > 0 ? `${(totalPaid / totalFee) * 100}%` : '0%' }}
                   />
                 </div>
@@ -236,10 +236,10 @@ export default function SettlementPage() {
               {/* Instalments */}
               <div className="space-y-2">
                 {c.paymentInstalments.map((inst: PaymentInstalment) => (
-                  <div key={inst.id} className={`p-3 rounded-sm border ${inst.paid ? 'border-[#c6ff00]/20 bg-[#c6ff00]/5' : 'border-[#252525]'}`}>
+                  <div key={inst.id} className={`p-3 rounded-sm border ${inst.paid ? 'border-[#3d52ff]/20 bg-[#3d52ff]/5' : 'border-[#252525]'}`}>
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <span className="text-xs font-medium">{inst.label}</span>
-                      <span className={`text-xs font-semibold ${inst.paid ? 'text-[#c6ff00]' : 'text-[#ededed]'}`}>
+                      <span className={`text-xs font-semibold ${inst.paid ? 'text-[#3d52ff]' : 'text-[#ededed]'}`}>
                         {formatCurrency(inst.amount, inst.currency)}
                       </span>
                     </div>
@@ -251,7 +251,7 @@ export default function SettlementPage() {
                       <button
                         onClick={() => togglePayment(inst.id)}
                         className={`flex items-center gap-1 text-[10px] transition-colors ${
-                          inst.paid ? 'text-[#c6ff00]' : 'text-[#555] hover:text-[#888]'
+                          inst.paid ? 'text-[#3d52ff]' : 'text-[#555] hover:text-[#888]'
                         }`}
                       >
                         {inst.paid ? <CheckCircle2 size={11} /> : <Circle size={11} />}

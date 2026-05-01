@@ -18,7 +18,7 @@ export default function MessagesPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
       <div className="flex items-center gap-3 mb-8">
-        <MessageSquare size={20} className="text-[#c6ff00]" />
+        <MessageSquare size={20} className="text-[#3d52ff]" />
         <h1 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Messages</h1>
       </div>
 

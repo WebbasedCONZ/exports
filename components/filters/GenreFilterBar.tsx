@@ -20,7 +20,7 @@ export default function GenreFilterBar({ selected, onChange }: Props) {
         onClick={() => onChange([])}
         className={`flex-shrink-0 text-xs px-3 py-1.5 rounded-sm border transition-all ${
           selected.length === 0
-            ? 'border-[#c6ff00]/40 bg-[#c6ff00]/10 text-[#c6ff00]'
+            ? 'border-[#3d52ff]/40 bg-[#3d52ff]/10 text-[#3d52ff]'
             : 'border-[#252525] text-[#555] hover:text-[#888]'
         }`}
       >

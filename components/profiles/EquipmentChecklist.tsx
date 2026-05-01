@@ -21,7 +21,7 @@ export default function EquipmentChecklist({ equipment }: { equipment: Equipment
             key={e}
             className={`flex items-center gap-2 text-xs px-3 py-2 rounded-sm border ${
               proficient
-                ? 'border-[#c6ff00]/20 bg-[#c6ff00]/5 text-[#c6ff00]'
+                ? 'border-[#3d52ff]/20 bg-[#3d52ff]/5 text-[#3d52ff]'
                 : 'border-[#252525] text-[#444]'
             }`}
           >

@@ -117,12 +117,12 @@ export default function OnboardingPage() {
               <button
                 key={opt.role}
                 onClick={() => { setRole(opt.role); setStep('profile'); }}
-                className={`text-left p-6 bg-[#141414] border rounded-md hover:border-[#c6ff00]/40 transition-all group ${role === opt.role ? 'border-[#c6ff00]/40' : 'border-[#252525]'}`}
+                className={`text-left p-6 bg-[#141414] border rounded-md hover:border-[#3d52ff]/40 transition-all group ${role === opt.role ? 'border-[#3d52ff]/40' : 'border-[#252525]'}`}
               >
-                <div className="text-[#c6ff00] mb-4">{opt.icon}</div>
-                <h3 className="font-semibold text-base mb-2 group-hover:text-[#c6ff00] transition-colors">{opt.title}</h3>
+                <div className="text-[#3d52ff] mb-4">{opt.icon}</div>
+                <h3 className="font-semibold text-base mb-2 group-hover:text-[#3d52ff] transition-colors">{opt.title}</h3>
                 <p className="text-xs text-[#555] leading-relaxed">{opt.desc}</p>
-                <div className="mt-4 flex items-center gap-1 text-xs text-[#555] group-hover:text-[#c6ff00] transition-colors">
+                <div className="mt-4 flex items-center gap-1 text-xs text-[#555] group-hover:text-[#3d52ff] transition-colors">
                   Get started <ArrowRight size={12} />
                 </div>
               </button>
@@ -166,7 +166,7 @@ export default function OnboardingPage() {
                   const active = equipment.includes(e);
                   return (
                     <button key={e} type="button" onClick={() => setEquipment(active ? equipment.filter((x) => x !== e) : [...equipment, e])}
-                      className={`text-xs px-3 py-1.5 rounded-sm border transition-all ${active ? 'border-[#c6ff00]/40 bg-[#c6ff00]/10 text-[#c6ff00]' : 'border-[#252525] text-[#555]'}`}>
+                      className={`text-xs px-3 py-1.5 rounded-sm border transition-all ${active ? 'border-[#3d52ff]/40 bg-[#3d52ff]/10 text-[#3d52ff]' : 'border-[#252525] text-[#555]'}`}>
                       {e}
                     </button>
                   );
@@ -229,8 +229,8 @@ export default function OnboardingPage() {
 
       {step === 'done' && (
         <div className="text-center py-10">
-          <div className="w-16 h-16 rounded-full bg-[#c6ff00]/10 border border-[#c6ff00]/30 flex items-center justify-center mx-auto mb-6">
-            <Check size={28} className="text-[#c6ff00]" />
+          <div className="w-16 h-16 rounded-full bg-[#3d52ff]/10 border border-[#3d52ff]/30 flex items-center justify-center mx-auto mb-6">
+            <Check size={28} className="text-[#3d52ff]" />
           </div>
           <h1 className="text-2xl font-bold mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>You're on EXPORTS</h1>
           <p className="text-[#555] text-sm mb-8">Your profile is live. Start exploring the platform.</p>
