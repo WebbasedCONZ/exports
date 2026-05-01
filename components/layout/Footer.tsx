@@ -55,9 +55,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-5 group">
-              <div className="w-8 h-8 bg-[#3d52ff] rounded-sm flex items-center justify-center">
-                <Zap size={15} className="text-white" fill="white" />
-              </div>
+              <Zap size={22} className="text-[#3d52ff]" fill="#3d52ff" />
               <span className="font-black text-sm tracking-[0.2em] uppercase text-white group-hover:text-[#3d52ff] transition-colors"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 EXPORTS
