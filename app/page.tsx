@@ -49,14 +49,13 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section className="relative min-h-screen flex flex-col justify-end px-6 pt-20 pb-16 overflow-hidden">
 
-        {/* Background photo */}
+        {/* Background photo — uses <img> so onError fallback works for missing local files */}
         <div className="absolute inset-0 z-0">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={HERO_IMG}
             alt="Underground rave crowd"
-            fill
-            priority
-            className="object-cover object-center"
+            className="w-full h-full object-cover object-center"
             onError={(e) => { (e.target as HTMLImageElement).src = HERO_FALLBACK; }}
           />
           {/* Dark gradient — heavier at top for nav, bleeds to near-black at bottom for text */}
@@ -86,12 +85,16 @@ export default function HomePage() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#3d52ff] animate-pulse ml-1" />
           </div>
 
-          <h1 className="text-[clamp(4rem,13vw,10rem)] font-black leading-[0.82] tracking-tighter uppercase mb-8"
+          <h1 className="text-[clamp(3.5rem,10vw,9rem)] font-black leading-[0.88] tracking-tighter uppercase mb-8"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <span className="block text-white">BOOK</span>
-            <span className="block" style={{ WebkitTextStroke: '3px #3d52ff', color: 'transparent' }}>SMARTER.</span>
-            <span className="block text-white">PLAY</span>
-            <span className="block text-[#3d52ff]">BETTER.</span>
+            <span className="block">
+              <span className="text-white">BOOK </span>
+              <span style={{ WebkitTextStroke: '3px #3d52ff', color: 'transparent' }}>SMARTER.</span>
+            </span>
+            <span className="block">
+              <span className="text-white">PLAY </span>
+              <span className="text-[#3d52ff]">BETTER.</span>
+            </span>
           </h1>
 
           <div className="flex flex-col lg:flex-row lg:items-end gap-8 mb-12">
@@ -140,11 +143,11 @@ export default function HomePage() {
 
           {/* Photo */}
           <div className="relative overflow-hidden rounded-sm min-h-[400px] group">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={DJ_IMG}
               alt="DJ at Pioneer decks with crowd"
-              fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 absolute inset-0"
               onError={(e) => { (e.target as HTMLImageElement).src = DJ_FALLBACK; }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -289,11 +292,11 @@ export default function HomePage() {
           FULL-BLEED BANNER — "No Half Measures"
       ══════════════════════════════════════ */}
       <section className="relative h-[55vh] min-h-[320px] overflow-hidden border-y border-white/5">
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={HERO_IMG}
           alt="Underground event"
-          fill
-          className="object-cover object-bottom"
+          className="w-full h-full object-cover object-bottom"
           onError={(e) => { (e.target as HTMLImageElement).src = HERO_FALLBACK; }}
         />
         {/* Angled colour wash */}
